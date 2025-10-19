@@ -1,7 +1,11 @@
 ---
-title: PublicFreeSuffix免费域名申请教程
-banner: "域名申请教程"
-cover: https://avatars.githubusercontent.com/u/213755762?v=4
+title: PublicFreeSuffix域名申请教程
+published: 2025-10-01
+description: '域名申请教程'
+image: 'https://avatars.githubusercontent.com/u/213755762?v=4'
+tags: [Domain,Markdown]
+category: 'Examples'
+draft: false 
 ---
 如题，此帖讲的是PublicFreeSuffix免费域名的申请教程.<br>
 首先，打开他们的GitHub仓库地址：
