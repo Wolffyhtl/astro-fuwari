@@ -60,7 +60,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Discord",
 			icon: "fa6-brands:discord",
-			url: "https://discordapp.com/users/1347933833143517264“
+			url: "https://discordapp.com/users/1347933833143517264“,
 		},
 		{
 			name: "Steam",
