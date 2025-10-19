@@ -5,8 +5,8 @@ export type SiteConfig = {
 	subtitle: string;
 
 	lang:
-		| "en"
 		| "zh_CN"
+		| "en"
 		| "zh_TW"
 		| "ja"
 		| "ko"
