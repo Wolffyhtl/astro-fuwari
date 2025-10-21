@@ -2,6 +2,7 @@
 import path from "node:path";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
+import Giscus from "../../components/misc/Giscus.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
@@ -107,7 +108,13 @@ const jsonLd = {
             </Markdown>
 
             {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
-
+            <Giscus
+                repo="Wolffyhtl/giscus-comments"
+                repoId="R_kgDOQGZinw"
+                category="General"
+                categoryId="DIC_kwDOQGZin84Cw5RD"
+            />
+           <br>
         </div>
     </div>
 
