@@ -14,7 +14,23 @@ import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import { profileConfig, siteConfig } from "../../config";
+import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import Comment from "@components/comment/index.astro";
+import AISummary from "@components/misc/AISummary.astro";
 
+export async function getStaticPaths() {
+    const blogEntries = await getSortedPosts();
+@@ -84,6 +85,9 @@ const jsonLd = {
+</div>
+</div>
+
+            <!-- AI Summary -->
+            {entry.data.description && <AISummary content={entry.data.description} class="onload-animation" />}
+
+<!-- metadata -->
+<div class="onload-animation">
+<PostMetadata
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
 	return blogEntries.map((entry) => ({
