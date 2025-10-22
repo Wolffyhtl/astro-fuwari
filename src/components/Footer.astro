@@ -2,6 +2,7 @@
 
 import { profileConfig } from "../config";
 import { url } from "../utils/url-utils";
+import UmamiPageViews from "./UmamiPageViews.astro";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -19,3 +20,12 @@ const currentYear = new Date().getFullYear();
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
     </div>
 </div>
+
+<footer>
+  <!-- 统计信息 -->
+  <div class="mb-4">
+    <UmamiPageViews type="total" showVisitors={true} />
+  </div>
+
+  <!-- 其他页脚内容 -->
+</footer>
