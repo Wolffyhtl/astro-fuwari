@@ -23,6 +23,7 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
+import umami from "@yeskunall/astro-umami";
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,6 +31,9 @@ export default defineConfig({
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
+		umami({
+			id: "94db1cb1-74f4-4a40-ad6c-962362670409" 
+		}),
 		tailwind({
 			nesting: true,
 		}),
