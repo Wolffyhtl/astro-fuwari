@@ -45,14 +45,9 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		LinkPreset.About,
 		{
-			name: "GitHub",
-			url: "https://github.com/Wolffyhtl", // Internal links should not include the base path, as it is automatically added
+			name: "统计",
+			url: "https://umamin.netlify.app/share/OHSVCU2p8TkNxV5c/clina.webn.cc", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
-		},
-		{
-			name: "Discord",
-			url: "https://discordapp.com/users/1347933833143517264",
-			external: true,
 		},
 	],
 };
@@ -90,4 +85,18 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	// Note: Some styles (such as background color) are being overridden, see the astro.config.mjs file.
 	// Please select a dark theme, as this blog theme currently only supports dark background color
 	theme: "github-dark",
+};
+
+export const umamiConfig: UmamiConfig = {
+  enable: true,
+  src: "https://umamin.netlify.app/script.js",
+  websiteId: "494de011-964f-4c5f-a00f-643da85e83fc",
+  domains: "clina.webn.cc",
+  autoTrack: true,
+  delayLoad: 2000, // 延迟2秒加载,不影响首屏
+};
+
+export const umamiStatsConfig: UmamiStatsConfig = {
+  enable: true,
+  apiUrl: "https://umani.nnn.x10.mx",
 };
