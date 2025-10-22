@@ -100,3 +100,17 @@ export type BlogPostData = {
 export type ExpressiveCodeConfig = {
 	theme: string;
 };
+
+export interface UmamiConfig {
+  enable: boolean;           // 是否启用
+  src: string;              // Umami脚本地址
+  websiteId: string;        // 网站ID
+  domains?: string;         // 限制域名(可选)
+  autoTrack?: boolean;      // 自动追踪(默认true)
+  delayLoad?: number;       // 延迟加载时间(毫秒)
+}
+
+export interface UmamiStatsConfig {
+  enable: boolean;          // 是否启用统计显示
+  apiUrl: string;          // API代理地址
+}
