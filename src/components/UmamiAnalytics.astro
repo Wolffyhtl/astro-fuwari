@@ -1,0 +1,37 @@
+---
+import { umamiConfig } from "@/config";
+
+const { enable, src, websiteId, domains, autoTrack, delayLoad } = umamiConfig;
+---
+
+{enable && (
+  <script
+    is:inline
+    define:vars={{ src, websiteId, domains, autoTrack, delayLoad }}
+  >
+    // 延迟加载Umami脚本
+    function loadUmami() {
+      const script = document.createElement('script');
+      script.defer = true;
+      script.src = src;
+      script.setAttribute('data-website-id', websiteId);
+
+      if (domains) {
+        script.setAttribute('data-domains', domains);
+      }
+
+      if (autoTrack !== undefined) {
+        script.setAttribute('data-auto-track', autoTrack.toString());
+      }
+
+      document.head.appendChild(script);
+    }
+
+    // 延迟加载
+    if (delayLoad && delayLoad > 0) {
+      setTimeout(loadUmami, delayLoad);
+    } else {
+      loadUmami();
+    }
+  </script>
+)}
