@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: [HarmonyOS_Sans],
+        sans: ['HarmonyOS_Sans', 'sans-serif', ...defaultTheme.fontFamily.sans],
       },
     },
   },
