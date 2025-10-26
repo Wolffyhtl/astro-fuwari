@@ -86,17 +86,3 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	// Please select a dark theme, as this blog theme currently only supports dark background color
 	theme: "github-dark",
 };
-
-export const umamiConfig: UmamiConfig = {
-  enable: true,
-  src: "https://umamin.netlify.app/script.js",
-  websiteId: "494de011-964f-4c5f-a00f-643da85e83fc",
-  domains: "clina.webn.cc",
-  autoTrack: true,
-  delayLoad: 2000, // 延迟2秒加载,不影响首屏
-};
-
-export const umamiStatsConfig: UmamiStatsConfig = {
-  enable: true,
-  apiUrl: "https://umani.nnn.x10.mx",
-};
