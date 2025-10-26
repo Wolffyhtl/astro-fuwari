@@ -3,7 +3,6 @@ import { Icon } from "astro-icon/components";
 import { profileConfig } from "../../config";
 import { url } from "../../utils/url-utils";
 import ImageWrapper from "../misc/ImageWrapper.astro";
-import UmamiPageViews from "@/components/UmamiPageViews.astro";
 
 const config = profileConfig;
 ---
@@ -37,13 +36,3 @@ const config = profileConfig;
         </div>
     </div>
 </div>
-<div class="profile-card">
-  <!-- 其他内容 -->
-
-  <!-- 总浏览量显示 -->
-  <div class="flex justify-center mb-2.5">
-    <UmamiPageViews type="total" class="text-sm" />
-  </div>
-</div>
-
-
