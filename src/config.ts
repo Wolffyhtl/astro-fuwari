@@ -46,7 +46,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.About,
 		{
 			name: "统计",
-			url: "https://umamin.netlify.app/share/OHSVCU2p8TkNxV5c/clina.webn.cc", // Internal links should not include the base path, as it is automatically added
+			url: "https://cloud.umami.is/share/8DJaB5vQAtklYTpl", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
 		},
 	],
