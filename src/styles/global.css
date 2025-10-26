@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "HarmonyOS_Sans";
+  src:local("HarmonyOS_Sans"),url('/public/fonts/HarmonyOS-Sans_SC_Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range:U+d65f-d7a3,U+e76c,U+e7c7-e7c8,U+e7e7-e7f3,U+e815-e847;
+  }
