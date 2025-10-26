@@ -1,7 +1,7 @@
 ---
 title: PublicFreeSuffix域名申请教程
 published: 2025-10-01
-description: '域名申请教程'
+description: '本文详细介绍了如何通过GitHub免费申请PublicFreeSuffix域名的详细步骤'
 image: 'https://avatars.githubusercontent.com/u/213755762?v=4'
 tags: [Domain,Markdown]
 category: 'Examples'
