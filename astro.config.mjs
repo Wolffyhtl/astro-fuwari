@@ -64,7 +64,7 @@ export default defineConfig({
 				pluginFileIcons({
 					iconClass: "text-4 w-5 inline mr-1 mb-1", 
 					titleClass: ""
-				})
+				}),
 				pluginLanguageBadge(),
 				pluginCustomCopyButton()
 			],
