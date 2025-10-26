@@ -140,6 +140,14 @@
     height: var(--collapsedHeight);
 }
 
+@font-face {
+    font-family: 'HarmonyOS_Sans';
+    src: url('/public/fonts/HarmonyOS_Sans_SC_Regular.woff2); format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 .custom-md spoiler {
   @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden rounded-md transition-all duration-150;
 
