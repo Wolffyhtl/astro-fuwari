@@ -193,7 +193,7 @@
 
 /* ✅ 打字机光标动画 */
 .ai-summary .ai-explanation::after {
-    content: '';
+    content: '0';
     display: inline-block;
     width: 8px;
     height: 2px;
