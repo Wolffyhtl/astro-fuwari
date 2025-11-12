@@ -4,7 +4,6 @@ import Categories from "./Categories.astro";
 import Profile from "./Profile.astro";
 import Tag from "./Tags.astro";
 import UmamiStats from "./UmamiStats.astro";
-import ServadsAd from "./ServadsAd.astro";
 interface Props {
 	class?: string;
 	headings?: MarkdownHeading[];
@@ -20,13 +19,5 @@ const className = Astro.props.class;
         <Categories class="onload-animation" style="animation-delay: 150ms"></Categories>
         <UmamiStats class="onload-animation" style="animation-delay: 200ms"></UmamiStats>
         <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
-    </div>
-    
-    <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
-                    <!-- 赞助标 -->
-    <div class="overflow-hidden flex justify-center">
-            <a href="https://www.crakrevenue.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/aff/crakrevenue.png" alt="Secbit" class="w-full max-w-[280px] rounded-lg hover:opacity-90 transition-opacity" />
-            </a>
     </div>
 </div>
