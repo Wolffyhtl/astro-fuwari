@@ -144,10 +144,8 @@ const bannerOffset =
 
 		<slot name="head"></slot>
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
-		
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="b0aad9b4-7587-4b16-a7f5-14999733afad"></script>
-    
-    <script src="https://affiliates.serv.adse.site/assets/ads/ad.js" class="adScriptClass"></script>
+    	<script defer src="https://cloud.umami.is/script.js" data-website-id="b0aad9b4-7587-4b16-a7f5-14999733afad"></script>
+    	<script src="https://affiliates.serv.adse.site/assets/ads/ad.js" class="adScriptClass"></script>
 	</head>
 	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
 		  data-overlayscrollbars-initialize
@@ -157,6 +155,7 @@ const bannerOffset =
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
+		<script src="https://affiliates.serv.adse.site/assets/ads/ad.js" class="adScriptClass"></script>
 	</body>
 </html>
 
