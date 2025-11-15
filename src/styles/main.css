@@ -261,3 +261,15 @@
         opacity: 0;
     }
 }   
+/* 深色模式下的PNG图标 */
+.dark-mode img.icon {
+  filter: invert(1) brightness(1.5);
+}
+
+/* 深色模式下的标题和文字 */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p {
+  color: #e0e0e0 !important;
+}
