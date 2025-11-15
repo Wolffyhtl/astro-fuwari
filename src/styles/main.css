@@ -261,15 +261,21 @@
         opacity: 0;
     }
 }   
+
 /* 深色模式下的PNG图标 */
-.dark-mode img.icon {
+.dark-mode .link-card img {
   filter: invert(1) brightness(1.5);
 }
 
-/* 深色模式下的标题和文字 */
-.dark-mode h1,
-.dark-mode h2,
-.dark-mode h3,
-.dark-mode p {
+/* 深色模式下的侧边栏文字和标签 */
+.dark-mode .sidebar-text,
+.dark-mode .sidebar-title,
+.dark-mode .sidebar-tag,
+.dark-mode .sidebar-count {
   color: #e0e0e0 !important;
+}
+
+/* 深色模式下的侧边栏背景色 */
+.dark-mode .sidebar {
+  background-color: #2a2a2a !important;
 }
