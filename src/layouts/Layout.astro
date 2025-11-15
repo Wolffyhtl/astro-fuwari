@@ -53,6 +53,18 @@ if (title) {
 	pageTitle = `${siteConfig.title} - ${siteConfig.subtitle}`;
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  const isDarkMode = document.body.classList.contains('dark-mode');
+
+  if (isDarkMode) {
+    // 修改链接卡片的背景色
+    document.querySelectorAll('.link-card, .card, .friend-link, .link-item').forEach(card => {
+      card.style.backgroundColor = '#2a2a2a';
+      card.style.borderColor = '#444';
+    });
+  }
+});
+
 const favicons: Favicon[] =
 	siteConfig.favicon.length > 0 ? siteConfig.favicon : defaultFavicons;
 
