@@ -1,45 +1,185 @@
 @tailwind components;
 
+/* ========== CSS 变量定义 - 基于参考代码 ========== */
+:root {
+  /* 浅色模式变量 - 保持原有颜色 */
+  --primary: oklch(.7 .14 var(--hue));
+  --page-bg: oklch(.95 .01 var(--hue));
+  --card-bg: white;
+  --liushen-title-font-color: #0883b7;
+  --liushen-maskbg: rgba(255,255,255,.85);
+  --liushen-ai-bg: conic-gradient(from 1.5708rad at 50% 50%, #d6b300 0%, #42a2ff 54%, #d6b300 100%);
+  --liushen-card-secondbg: #f1f3f8;
+  --liushen-text: #4c4948;
+  --liushen-secondtext: rgba(60,60,67,.8);
+  --btn-content: oklch(.55 .12 var(--hue));
+  --btn-regular-bg: oklch(.95 .025 var(--hue));
+  --btn-regular-bg-hover: oklch(.9 .05 var(--hue));
+  --btn-regular-bg-active: oklch(.85 .08 var(--hue));
+  --btn-plain-bg-hover: oklch(.95 .025 var(--hue));
+  --btn-plain-bg-active: oklch(.98 .01 var(--hue));
+  --btn-card-bg-hover: oklch(.98 .005 var(--hue));
+  --btn-card-bg-active: oklch(.9 .03 var(--hue));
+  --enter-btn-bg: var(--btn-regular-bg);
+  --enter-btn-bg-hover: var(--btn-regular-bg-hover);
+  --enter-btn-bg-active: var(--btn-regular-bg-active);
+  --deep-text: oklch(.25 .02 var(--hue));
+  --title-active: oklch(.6 .1 var(--hue));
+  --line-divider: rgba(0,0,0,.08);
+  --line-color: rgba(0,0,0,.1);
+  --meta-divider: rgba(0,0,0,.2);
+  --inline-code-bg: var(--btn-regular-bg);
+  --inline-code-color: var(--btn-content);
+  --selection-bg: oklch(.9 .05 var(--hue));
+  --codeblock-selection: oklch(.4 .08 var(--hue));
+  --codeblock-bg: oklch(.17 .015 var(--hue));
+  --codeblock-topbar-bg: oklch(.3 .02 var(--hue));
+  --license-block-bg: rgba(0,0,0,.03);
+  --link-underline: oklch(.93 .04 var(--hue));
+  --link-hover: oklch(.95 .025 var(--hue));
+  --link-active: oklch(.9 .05 var(--hue));
+  --float-panel-bg: white;
+  --scrollbar-bg-light: rgba(0,0,0,.4);
+  --scrollbar-bg-hover-light: rgba(0,0,0,.5);
+  --scrollbar-bg-active-light: rgba(0,0,0,.6);
+  --scrollbar-bg-dark: rgba(255,255,255,.4);
+  --scrollbar-bg-hover-dark: rgba(255,255,255,.5);
+  --scrollbar-bg-active-dark: rgba(255,255,255,.6);
+  --scrollbar-bg: var(--scrollbar-bg-light);
+  --scrollbar-bg-hover: var(--scrollbar-bg-hover-light);
+  --scrollbar-bg-active: var(--scrollbar-bg-active-light);
+  --color-selection-bar: linear-gradient(to right, oklch(.8 .1 0), oklch(.8 .1 30), oklch(.8 .1 60), oklch(.8 .1 90), oklch(.8 .1 120), oklch(.8 .1 150), oklch(.8 .1 180), oklch(.8 .1 210), oklch(.8 .1 240), oklch(.8 .1 270), oklch(.8 .1 300), oklch(.8 .1 330), oklch(.8 .1 360));
+  --display-light-icon: 1;
+  --display-dark-icon: 0;
+  --admonitions-color-tip: oklch(.7 .14 180);
+  --admonitions-color-note: oklch(.7 .14 250);
+  --admonitions-color-important: oklch(.7 .14 310);
+  --admonitions-color-warning: oklch(.7 .14 60);
+  --admonitions-color-caution: oklch(.6 .2 25);
+  --toc-badge-bg: oklch(.89 .05 var(--hue));
+  --toc-btn-hover: oklch(.926 .015 var(--hue));
+  --toc-btn-active: oklch(.9 .015 var(--hue));
+  --toc-width: calc((100vw - var(--page-width)) / 2 - 1rem);
+  --toc-item-active: oklch(.7 .13 var(--hue));
+  
+  /* 新增变量以确保兼容性 */
+  --radius-large: 12px;
+  --collapsedHeight: 200px;
+}
+
+/* ========== 深色模式变量 - 使用 :root.dark 选择器 ========== */
+:root.dark {
+  --primary: oklch(.75 .14 var(--hue));
+  --page-bg: oklch(.16 .014 var(--hue));
+  --card-bg: oklch(.23 .015 var(--hue));
+  --liushen-title-font-color: #0883b7;
+  --liushen-maskbg: rgba(0,0,0,.85);
+  --liushen-ai-bg: conic-gradient(from 1.5708rad at 50% 50%, rgba(214,178,0,.46) 0%, rgba(66,162,255,.46) 54%, rgba(214,178,0,.46) 100%);
+  --liushen-card-secondbg: #3e3f41;
+  --liushen-text: rgba(255,255,255,.702);
+  --liushen-secondtext: #a1a2b8;
+  --btn-content: oklch(.75 .1 var(--hue));
+  --btn-regular-bg: oklch(.33 .035 var(--hue));
+  --btn-regular-bg-hover: oklch(.38 .04 var(--hue));
+  --btn-regular-bg-active: oklch(.43 .045 var(--hue));
+  --btn-plain-bg-hover: oklch(.3 .035 var(--hue));
+  --btn-plain-bg-active: oklch(.27 .025 var(--hue));
+  --btn-card-bg-hover: oklch(.3 .03 var(--hue));
+  --btn-card-bg-active: oklch(.35 .035 var(--hue));
+  --line-divider: rgba(255,255,255,.08);
+  --line-color: rgba(255,255,255,.1);
+  --meta-divider: rgba(255,255,255,.2);
+  --selection-bg: oklch(.4 .08 var(--hue));
+  --codeblock-bg: oklch(.17 .015 var(--hue));
+  --codeblock-topbar-bg: oklch(.12 .015 var(--hue));
+  --license-block-bg: var(--codeblock-bg);
+  --link-underline: oklch(.4 .08 var(--hue));
+  --link-hover: oklch(.4 .08 var(--hue));
+  --link-active: oklch(.35 .07 var(--hue));
+  --float-panel-bg: oklch(.19 .015 var(--hue));
+  --scrollbar-bg: var(--scrollbar-bg-dark);
+  --scrollbar-bg-hover: var(--scrollbar-bg-hover-dark);
+  --scrollbar-bg-active: var(--scrollbar-bg-active-dark);
+  --color-selection-bar: linear-gradient(to right, oklch(.7 .1 0), oklch(.7 .1 30), oklch(.7 .1 60), oklch(.7 .1 90), oklch(.7 .1 120), oklch(.7 .1 150), oklch(.7 .1 180), oklch(.7 .1 210), oklch(.7 .1 240), oklch(.7 .1 270), oklch(.7 .1 300), oklch(.7 .1 330), oklch(.7 .1 360));
+  --display-light-icon: 0;
+  --display-dark-icon: 1;
+  --admonitions-color-tip: oklch(.75 .14 180);
+  --admonitions-color-note: oklch(.75 .14 250);
+  --admonitions-color-important: oklch(.75 .14 310);
+  --admonitions-color-warning: oklch(.75 .14 60);
+  --admonitions-color-caution: oklch(.65 .2 25);
+  --toc-badge-bg: var(--btn-regular-bg);
+  --toc-btn-hover: oklch(.22 .02 var(--hue));
+  --toc-btn-active: oklch(.25 .02 var(--hue));
+  --toc-item-active: oklch(.35 .07 var(--hue));
+}
+
+/* ========== 确保背景色正确应用 ========== */
+html {
+  background-color: var(--page-bg) !important;
+  transition: background-color 0.3s ease !important;
+}
+
+body {
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== 组件样式 ========== */
 @layer components {
     .card-base {
-        @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
+        @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition-colors duration-300;
     }
+    
     h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
-        @apply transition;
+        @apply transition-colors duration-300;
     }
+    
     .card-shadow {
         @apply drop-shadow-[0_2px_4px_rgba(0,0,0,0.005)]
     }
+    
     .expand-animation {
         @apply relative before:ease-out before:transition active:bg-none hover:before:bg-[var(--btn-plain-bg-hover)] active:before:bg-[var(--btn-plain-bg-active)] z-0
         before:absolute before:rounded-[inherit] before:inset-0 before:scale-[0.85] hover:before:scale-100 before:-z-10
     }
+    
     .link {
-        @apply transition rounded-md p-1 -m-1 expand-animation;
+        @apply transition-colors duration-300 rounded-md p-1 -m-1 expand-animation;
     }
+    
     .link-lg {
-        @apply transition rounded-md p-1.5 -m-1.5 expand-animation;
+        @apply transition-colors duration-300 rounded-md p-1.5 -m-1.5 expand-animation;
     }
+    
     .float-panel {
-        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-xl dark:shadow-none
+        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition-colors duration-300 shadow-xl;
     }
+    
     .float-panel-closed {
         @apply -translate-y-1 opacity-0 pointer-events-none
     }
+    
     .search-panel mark {
         @apply bg-transparent text-[var(--primary)]
     }
 
     .btn-card {
-        @apply transition flex items-center justify-center bg-[var(--card-bg)] hover:bg-[var(--btn-card-bg-hover)]
-        active:bg-[var(--btn-card-bg-active)]
+        @apply transition-colors duration-300 flex items-center justify-center bg-[var(--card-bg)] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)]
     }
+    
     .btn-card.disabled {
-        @apply pointer-events-none text-black/10 dark:text-white/10
+        @apply pointer-events-none text-black/10;
     }
+    
+    :root.dark .btn-card.disabled {
+        @apply text-white/10;
+    }
+    
     .btn-plain {
-        @apply transition relative flex items-center justify-center bg-none
-        text-black/75 hover:text-[var(--primary)] dark:text-white/75 dark:hover:text-[var(--primary)];
+        @apply transition-colors duration-300 relative flex items-center justify-center bg-none;
+        color: var(--btn-content);
         &:not(.scale-animation) {
             @apply hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
         }
@@ -50,14 +190,13 @@
             }
         }
     }
+
     .btn-regular {
-        @apply transition flex items-center justify-center bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]
-        text-[var(--btn-content)] dark:text-white/75
+        @apply transition-colors duration-300 flex items-center justify-center bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)] text-[var(--btn-content)]
     }
 
     .link-underline {
-        @apply transition underline decoration-2 decoration-dashed decoration-[var(--link-underline)]
-        hover:decoration-[var(--link-hover)] active:decoration-[var(--link-active)] underline-offset-[0.25rem]
+        @apply transition-colors duration-300 underline decoration-2 decoration-dashed decoration-[var(--link-underline)] hover:decoration-[var(--link-hover)] active:decoration-[var(--link-active)] underline-offset-[0.25rem]
     }
 
     .toc-hide,
@@ -78,37 +217,71 @@
     }
 
     .text-90 {
-        @apply text-black/90 dark:text-white/90
+        color: rgba(0, 0, 0, 0.9);
     }
+    :root.dark .text-90 {
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
     .text-75 {
-        @apply text-black/75 dark:text-white/75
+        color: rgba(0, 0, 0, 0.75);
     }
+    :root.dark .text-75 {
+        color: rgba(255, 255, 255, 0.75);
+    }
+    
     .text-50 {
-        @apply text-black/50 dark:text-white/50
+        color: rgba(0, 0, 0, 0.5);
     }
+    :root.dark .text-50 {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    
     .text-30 {
-        @apply text-black/30 dark:text-white/30
+        color: rgba(0, 0, 0, 0.3);
     }
+    :root.dark .text-30 {
+        color: rgba(255, 255, 255, 0.3);
+    }
+    
     .text-25 {
-        @apply text-black/25 dark:text-white/25
+        color: rgba(0, 0, 0, 0.25);
+    }
+    :root.dark .text-25 {
+        color: rgba(255, 255, 255, 0.25);
     }
 
     .meta-icon {
-        @apply w-8 h-8 transition rounded-md flex items-center justify-center bg-[var(--btn-regular-bg)]
-        text-[var(--btn-content)] mr-2
+        @apply w-8 h-8 transition-colors duration-300 rounded-md flex items-center justify-center bg-[var(--btn-regular-bg)] text-[var(--btn-content)] mr-2
     }
+    
     .with-divider {
-        @apply before:content-['/'] before:ml-1.5 before:mr-1.5 before:text-[var(--meta-divider)] before:text-sm
-        before:font-medium before:first-of-type:hidden before:transition
+        @apply before:content-['/'] before:ml-1.5 before:mr-1.5 before:text-[var(--meta-divider)] before:text-sm before:font-medium before:first-of-type:hidden before:transition-colors before:duration-300
     }
 
     .btn-regular-dark {
-        @apply flex items-center justify-center
-        bg-[oklch(0.45_0.01_var(--hue))] hover:bg-[oklch(0.50_0.01_var(--hue))] active:bg-[oklch(0.55_0.01_var(--hue))]
-        dark:bg-[oklch(0.30_0.02_var(--hue))] dark:hover:bg-[oklch(0.35_0.03_var(--hue))] dark:active:bg-[oklch(0.40_0.03_var(--hue))]
+        @apply flex items-center justify-center;
+        background: oklch(0.45 0.01 var(--hue));
     }
+    .btn-regular-dark:hover {
+        background: oklch(0.50 0.01 var(--hue));
+    }
+    .btn-regular-dark:active {
+        background: oklch(0.55 0.01 var(--hue));
+    }
+    
+    :root.dark .btn-regular-dark {
+        background: oklch(0.30 0.02 var(--hue));
+    }
+    :root.dark .btn-regular-dark:hover {
+        background: oklch(0.35 0.03 var(--hue));
+    }
+    :root.dark .btn-regular-dark:active {
+        background: oklch(0.40 0.03 var(--hue));
+    }
+    
     .btn-regular-dark.success {
-        @apply bg-[oklch(0.75_0.14_var(--hue))] dark:bg-[oklch(0.75_0.14_var(--hue))]
+        background: oklch(0.75 0.14 var(--hue));
     }
 }
 
@@ -117,7 +290,7 @@
 }
 
 ::selection {
-    background-color: var(--selection-bg)
+    background-color: var(--selection-bg) !important;
 }
 
 .dash-line {
@@ -149,19 +322,26 @@
 }
 
 .custom-md spoiler {
-  @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden rounded-md transition-all duration-150;
-
-  &:not(:hover) {
-    color: var(--codeblock-bg);
-    * {
-        color: var(--codeblock-bg);
-    }
-  }
+  background: var(--codeblock-bg);
+  padding: 2px 4px;
+  overflow: hidden;
+  border-radius: 6px;
+  transition: all 0.15s;
 }
- /* =================== */
-/* 📘 AI 摘要模块样式 */
-/* =================== */
 
+.custom-md spoiler:hover {
+  background: transparent;
+}
+
+.custom-md spoiler:not(:hover) {
+  color: var(--codeblock-bg);
+}
+
+.custom-md spoiler:not(:hover) * {
+  color: var(--codeblock-bg);
+}
+
+/* ========== AI 摘要模块样式 ========== */
 .ai-summary {
     background: var(--card-bg);
     border: 1px solid var(--line-divider);
@@ -187,26 +367,23 @@
     padding: 8px 12px;
     font-size: 15px;
     line-height: 1.4;
-    @apply text-90;
+    color: var(--btn-content);
     text-align: justify;
 }
 
-/* ✅ 打字机光标动画 */
 .ai-summary .ai-explanation::after {
     content: "";
     display: inline-block;
     width: 8px;
     height: 2px;
     margin-left: 2px;
-    @apply bg-black/90 dark:bg-white/90;
+    background-color: var(--btn-content);
     vertical-align: bottom;
     animation: blink-underline 1s ease-in-out infinite;
-    transition: 全部 0.3s;
     position: relative;
     bottom: 3px;
 }
 
-/* 打字完成后隐藏光标 */
 .ai-summary .ai-explanation.typing-complete::after {
     display: none;
 }
@@ -219,7 +396,7 @@
     align-items: center;
     position: relative;
     padding: 0 12px;
-    cursor: 默认;
+    cursor: default;
     user-select: none;
 }
 
@@ -252,12 +429,11 @@
     transition: 0.3s;
 }
 
-/* ✅ 打字机光标闪烁动画 */
 @keyframes blink-underline {
-    0%， 100% {
+    0%, 100% {
         opacity: 1;
     }
     50% {
         opacity: 0;
     }
-}   
+}
