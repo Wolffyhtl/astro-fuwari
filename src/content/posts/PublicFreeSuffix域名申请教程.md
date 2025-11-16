@@ -3,7 +3,7 @@ title: PublicFreeSuffix域名申请教程
 published: 2025-10-01
 description: '本文详细介绍了如何通过GitHub免费申请PublicFreeSuffix域名的详细步骤'
 image: 'https://avatars.githubusercontent.com/u/213755762?v=4'
-tags: [Domain,Markdown]
+tags: [域名,日常]
 category: 'Examples'
 draft: false 
 ---
@@ -16,7 +16,7 @@ draft: false
 第二步，打开你fork的仓库，在whois文件夹里新建一个json文件，文件名为`你想注册的域名.no.kg.json`.<br>
 这里使用no.kg的域名后缀作为演示，如果想使用其他域名后缀，请把no.kg改为你想使用的域名后缀.<br>
 json文件格式：
-```
+```json
 {
   "registrant": "一个可以发邮件的邮箱",
   "domain": "域名名字",
@@ -38,7 +38,7 @@ json文件格式：
 注意：第几次更改就填数字几<br>
 第四步，向官方仓库发起一个拉取请求，标题为`Registration/Update/Remove: 域名名字.域名后缀`
 内容这样填写：
-```
+```markdown
 > All items should be completed and confirmed to trigger the automatic merge workflow.
 
 ## Operation Type
