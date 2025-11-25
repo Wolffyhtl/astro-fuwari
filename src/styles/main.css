@@ -5,6 +5,8 @@
   /* 浅色模式变量 - 保持原有颜色 */
   --primary: oklch(.7 .14 var(--hue));
   --page-bg: oklch(.95 .01 var(--hue));
+  --aifont: rgba(0, 0, 0, 1);
+  --linko: oklch(.205 .0 var(--hue));
   --card-bg: white;
   --liushen-title-font-color: #0883b7;
   --liushen-maskbg: rgba(255,255,255,.85);
@@ -71,6 +73,8 @@
 :root.dark {
   --primary: oklch(.75 .14 var(--hue));
   --page-bg: oklch(.16 .014 var(--hue));
+  --aifont: rgba(255, 255, 255, 1);
+  --linko: oklch(1 .0 var(--hue));
   --card-bg: oklch(.23 .015 var(--hue));
   --liushen-title-font-color: #0883b7;
   --liushen-maskbg: rgba(0,0,0,.85);
@@ -179,7 +183,7 @@ body {
     
     .btn-plain {
         @apply transition-colors duration-300 relative flex items-center justify-center bg-none;
-        color: var(--btn-content);
+        color: var(--linko);
         &:not(.scale-animation) {
             @apply hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
         }
@@ -340,7 +344,6 @@ body {
 .custom-md spoiler:not(:hover) * {
   color: var(--codeblock-bg);
 }
-
 /* ========== AI 摘要模块样式 ========== */
 .ai-summary {
     background: var(--card-bg);
@@ -355,6 +358,7 @@ body {
     position: relative;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
+    color: var(--text-color);
 }
 
 .ai-summary:hover {
@@ -367,7 +371,7 @@ body {
     padding: 8px 12px;
     font-size: 15px;
     line-height: 1.4;
-    color: var(--btn-content);
+    color: var(--aifont);
     text-align: justify;
 }
 
@@ -377,7 +381,7 @@ body {
     width: 8px;
     height: 2px;
     margin-left: 2px;
-    background-color: var(--btn-content);
+    background-color: var(--text-color);
     vertical-align: bottom;
     animation: blink-underline 1s ease-in-out infinite;
     position: relative;
@@ -398,6 +402,7 @@ body {
     padding: 0 12px;
     cursor: default;
     user-select: none;
+    color: var(--text-color);
 }
 
 .ai-summary .ai-title .ai-title-left {
