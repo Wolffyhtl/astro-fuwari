@@ -74,6 +74,12 @@ export const profileConfig: ProfileConfig = {
 			url: "https://github.com/Wolffyhtl",
 		},
 	],
+		officialSites: [
+		{ url: "https://clina.webn.cc", alias: "Edgeone Pages" },
+		{ url: "https://cli.ye.gs", alias: "Netlify" },
+		{ url: "https://clina.codeberg.page", alias: "Codeberg Pages" },
+		{ url: "https://cli.osfs.top", alias: "GitHub Pages"},
+	],
 };
 
 export const licenseConfig: LicenseConfig = {
