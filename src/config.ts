@@ -37,6 +37,12 @@ export const siteConfig: SiteConfig = {
 		//   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
 		// }
 	],
+	officialSites: [
+		{ url: "https://clina.webn.cc", alias: "Edgeone Pages" },
+		{ url: "https://cli.ye.gs", alias: "Netlify" },
+		{ url: "https://clina.codeberg.page", alias: "Codeberg Pages" },
+		{ url: "https://cli.osfs.top", alias: "GitHub Pages"},
+	],
 };
 
 export const navBarConfig: NavBarConfig = {
@@ -74,12 +80,7 @@ export const profileConfig: ProfileConfig = {
 			url: "https://github.com/Wolffyhtl",
 		},
 	],
-		officialSites: [
-		{ url: "https://clina.webn.cc", alias: "Edgeone Pages" },
-		{ url: "https://cli.ye.gs", alias: "Netlify" },
-		{ url: "https://clina.codeberg.page", alias: "Codeberg Pages" },
-		{ url: "https://cli.osfs.top", alias: "GitHub Pages"},
-	],
+
 };
 
 export const licenseConfig: LicenseConfig = {
