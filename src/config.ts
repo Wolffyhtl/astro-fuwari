@@ -38,8 +38,8 @@ export const siteConfig: SiteConfig = {
 		// }
 	],
 	officialSites: [
+		{ url: "https://blog.150191.xyz", alias: "Netlify" },
 		{ url: "https://clina.webn.cc", alias: "EdgeOne Pages" },
-		{ url: "https://cli.ye.gs", alias: "Netlify" },
 		{ url: "https://clina.codeberg.page", alias: "Codeberg Pages" },
 		{ url: "https://cli.osfs.top", alias: "GitHub Pages"},
 	],
