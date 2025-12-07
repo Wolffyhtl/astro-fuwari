@@ -1,57 +1,50 @@
+/**
+ * Based on the discussion at https://github.com/expressive-code/expressive-code/issues/153#issuecomment-2282218684
+ */
+import { definePlugin } from "@expressive-code/core";
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content="origin" name="referrer">
-    <title>Forbidden &middot; GitHub</title>
-    <style type="text/css" media="screen">
-      body {
-        background-color: #f1f1f1;
-        margin: 0;
+export function pluginLanguageBadge() {
+	return definePlugin({
+		name: "Language Badge",
+		// @ts-expect-error
+		baseStyles: ({ _cssVar }) => `
+      [data-language]::before {
+        position: absolute;
+        z-index: 2;
+        right: 0.5rem;
+        top: 0.5rem;
+        padding: 0.1rem 0.5rem;
+        content: attr(data-language);
+        font-family: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: oklch(0.75 0.1 var(--hue));
+        background: oklch(0.33 0.035 var(--hue));
+        border-radius: 0.5rem;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        opacity: 0;
       }
-      body,
-      input,
-      button {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      .frame:not(.has-title):not(.is-terminal) {
+        @media (hover: none) {
+          & [data-language]::before {
+            opacity: 1;
+            margin-right: 3rem;
+          }
+          & [data-language]:active::before {
+            opacity: 0;
+          }
+        }
+        @media (hover: hover) {
+          & [data-language]::before {
+            opacity: 1;
+          }
+          &:hover [data-language]::before {
+            opacity: 0;
+          }
+        }
       }
-      .container { margin: 30px auto 40px auto; width: 800px; text-align: center; }
-      a { color: #4183c4; text-decoration: none; font-weight: bold; }
-      a:hover { text-decoration: underline; }
-      h1, h2, h3 { color: #666; }
-      ul { list-style: none; padding: 25px 0; }
-      li {
-        display: inline;
-        margin: 10px 50px 10px 0px;
-      }
-      .logo { display: inline-block; margin-top: 35px; }
-      .logo-img-2x { display: none; }
-      @media
-      only screen and (-webkit-min-device-pixel-ratio: 2),
-      only screen and (   min--moz-device-pixel-ratio: 2),
-      only screen and (     -o-min-device-pixel-ratio: 2/1),
-      only screen and (        min-device-pixel-ratio: 2),
-      only screen and (                min-resolution: 192dpi),
-      only screen and (                min-resolution: 2dppx) {
-        .logo-img-1x { display: none; }
-        .logo-img-2x { display: inline-block; }
-      }
-    </style>
-  </head>
-  <body>
-
-    <div class="container">
-      <h1>Access to this site has been restricted.</h1>
-
-      <p>
-        <br>
-        If you believe this is an error,
-        please contact <a href="https://support.github.com">Support</a>.
-      </p>
-
-      <div id="s">
-        <a href="https://githubstatus.com">GitHub Status</a> &mdash;
-        <a href="https://twitter.com/githubstatus">@githubstatus</a>
-      </div>
-    </div>
-  </body>
-</html>
+    `,
+	});
+}
