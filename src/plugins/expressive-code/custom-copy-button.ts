@@ -1,57 +1,90 @@
+import { definePlugin } from "@expressive-code/core";
+import type { Element } from "hast";
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content="origin" name="referrer">
-    <title>Forbidden &middot; GitHub</title>
-    <style type="text/css" media="screen">
-      body {
-        background-color: #f1f1f1;
-        margin: 0;
-      }
-      body,
-      input,
-      button {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      .container { margin: 30px auto 40px auto; width: 800px; text-align: center; }
-      a { color: #4183c4; text-decoration: none; font-weight: bold; }
-      a:hover { text-decoration: underline; }
-      h1, h2, h3 { color: #666; }
-      ul { list-style: none; padding: 25px 0; }
-      li {
-        display: inline;
-        margin: 10px 50px 10px 0px;
-      }
-      .logo { display: inline-block; margin-top: 35px; }
-      .logo-img-2x { display: none; }
-      @media
-      only screen and (-webkit-min-device-pixel-ratio: 2),
-      only screen and (   min--moz-device-pixel-ratio: 2),
-      only screen and (     -o-min-device-pixel-ratio: 2/1),
-      only screen and (        min-device-pixel-ratio: 2),
-      only screen and (                min-resolution: 192dpi),
-      only screen and (                min-resolution: 2dppx) {
-        .logo-img-1x { display: none; }
-        .logo-img-2x { display: inline-block; }
-      }
-    </style>
-  </head>
-  <body>
+export function pluginCustomCopyButton() {
+	return definePlugin({
+		name: "Custom Copy Button",
+		hooks: {
+			postprocessRenderedBlock: (context) => {
+				function traverse(node: Element) {
+					if (node.type === "element" && node.tagName === "pre") {
+						processCodeBlock(node);
+						return;
+					}
+					if (node.children) {
+						for (const child of node.children) {
+							if (child.type === "element") traverse(child);
+						}
+					}
+				}
 
-    <div class="container">
-      <h1>Access to this site has been restricted.</h1>
+				function processCodeBlock(node: Element) {
+					const copyButton = {
+						type: "element" as const,
+						tagName: "button",
+						properties: {
+							className: ["copy-btn"],
+							"aria-label": "Copy code",
+						},
+						children: [
+							{
+								type: "element" as const,
+								tagName: "div",
+								properties: {
+									className: ["copy-btn-icon"],
+								},
+								children: [
+									{
+										type: "element" as const,
+										tagName: "svg",
+										properties: {
+											viewBox: "0 -960 960 960",
+											xmlns: "http://www.w3.org/2000/svg",
+											className: ["copy-btn-icon", "copy-icon"],
+										},
+										children: [
+											{
+												type: "element" as const,
+												tagName: "path",
+												properties: {
+													d: "M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z",
+												},
+												children: [],
+											},
+										],
+									},
+									{
+										type: "element" as const,
+										tagName: "svg",
+										properties: {
+											viewBox: "0 -960 960 960",
+											xmlns: "http://www.w3.org/2000/svg",
+											className: ["copy-btn-icon", "success-icon"],
+										},
+										children: [
+											{
+												type: "element" as const,
+												tagName: "path",
+												properties: {
+													d: "m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z",
+												},
+												children: [],
+											},
+										],
+									},
+								],
+							},
+						],
+					} as Element;
 
-      <p>
-        <br>
-        If you believe this is an error,
-        please contact <a href="https://support.github.com">Support</a>.
-      </p>
+					if (!node.children) {
+						node.children = [];
+					}
+					node.children.push(copyButton);
+				}
 
-      <div id="s">
-        <a href="https://githubstatus.com">GitHub Status</a> &mdash;
-        <a href="https://twitter.com/githubstatus">@githubstatus</a>
-      </div>
-    </div>
-  </body>
-</html>
+				traverse(context.renderData.blockAst);
+			},
+		},
+	});
+}
