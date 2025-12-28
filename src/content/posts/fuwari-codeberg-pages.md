@@ -4,7 +4,7 @@ published: 2025-12-28
 description: 本文介绍将Fuwari博客部署到Codeberg Pages的方法：先申请CI权限，再配置仓库工作流文件，实现代码推送后自动构建并发布至专属页面。
 tags: [日常]
 category: 'Examples'
-draft: "false"
+draft: false
 ---
 Codeberg Pages 是 Codeberg 官方提供的一个静态网站托管平台，类似于 Github Pages.<br>
 今天我们就要将Fuwari博客部署到Codeberg Pages.<br>
