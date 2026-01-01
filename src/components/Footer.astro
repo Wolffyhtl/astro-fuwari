@@ -6,41 +6,42 @@ import { url } from "../utils/url-utils";
 const currentYear = new Date().getFullYear();
 ---
 
-<div class="footer col-span-2 onload-animation hidden lg:block">
-  <!-- 简洁美观的页脚 -->
-  <footer class="mt-10 mb-6">
+<footer class="mt-10 mb-6">
     <div class="h-px bg-gradient-to-r from-transparent via-black/15 dark:via-white/15 to-transparent mx-8"></div>
+    
     <div class="mt-6 mx-auto max-w-3xl px-6">
-      <div
-        class="bg-gradient-to-r from-[oklch(97%_0.01_var(--hue))] to-[oklch(95%_0.02_var(--hue))]
+        <div class="bg-gradient-to-r from-[oklch(97%_0.01_var(--hue))] to-[oklch(95%_0.02_var(--hue))] 
                     dark:from-[oklch(18%_0.02_var(--hue))] dark:to-[oklch(15%_0.03_var(--hue))]
                     rounded-xl p-5 border border-black/5 dark:border-white/10">
-        <!-- 内容区域 -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
-          <!-- 左侧：版权和链接 -->
-          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-black/70 dark:text-white/70">
-            <span>© 2025 Clina</span>
-            <span class="text-black/30 dark:text-white/30">•</span>
-            <a class="hover:text-[var(--primary)] transition-colors font-medium" target="_blank" href="/rss.xml">RSS</a>
-            <span class="text-black/30 dark:text-white/30">•</span>
-            <a class="hover:text-[var(--primary)] transition-colors font-medium" target="_blank" href="/sitemap-index.xml">Sitemap</a>
-          </div>
-            <a href="https://app.netlify.com/projects/cliog/deploys" target="_blank">
-                <img src="https://api.netlify.com/api/v1/badges/1af02667-d47d-4f5b-b40e-bb39e1ea9642/deploy-status" alt="Netlify Status" style="transition: none;">
-            </a>
-        </div>
-        <!-- 技术栈信息 -->
-        <div
-          class="mt-2 pt-2 border-t border-black/10 dark:border-white/10
+            
+            <!-- 内容区域 -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+                <!-- 左侧：版权和链接 -->
+                <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-black/70 dark:text-white/70">
+                    <span>&copy; {currentYear} {profileConfig.name}</span>
+                    <span class="text-black/30 dark:text-white/30">•</span>
+                    <a class="hover:text-[var(--primary)] transition-colors font-medium" target="_blank" href={url('rss.xml')}>RSS</a>
+                    <span class="text-black/30 dark:text-white/30">•</span>
+                    <a class="hover:text-[var(--primary)] transition-colors font-medium" target="_blank" href={url('sitemap-index.xml')}>Sitemap</a>
+                </div>
+                
+                
+               <a target="_blank"
+               href="https://app.netlify.com/projects/cliog/deploys" >
+                 <img src="https://api.netlify.com/api/v1/badges/1af02667-d47d-4f5b-b40e-bb39e1ea9642/deploy-status" alt="Netlify Status" style="transition: none;">
+               </a>
+            </div>
+            
+            <!-- 技术栈信息 -->
+            <div class="mt-2 pt-2 border-t border-black/10 dark:border-white/10 
                         flex flex-wrap justify-center items-center gap-2 text-xs text-black/50 dark:text-white/50">
-          <span>Powered by</span>
-          <a class="text-orange-600 dark:text-orange-400 hover:underline font-medium" target="_blank" href="https://astro.build">Astro</a>
-          <span>&amp;</span>
-          <a class="text-blue-600 dark:text-blue-400 hover:underline font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
-          <span>|</span>
-          <a class="hover:underline font-medium" target="_blank" href="https://icp.gov.moe/?keyword=20255517">萌ICP备20255517号</a>
+                <span>Powered by</span>
+                    <a class="text-orange-600 dark:text-orange-400 hover:underline font-medium" target="_blank" href="https://astro.build">Astro</a>
+                <span>&</span>
+                    <a class="text-blue-600 dark:text-blue-400 hover:underline font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
+                <span>|</span>
+                    <a class="hover:underline font-medium" target="_blank" href="https://icp.gov.moe/?keyword=20250946">萌ICP备20250946号</a>
+            </div>
         </div>
-      </div>
     </div>
-  </footer>
-</div>
+</footer>
