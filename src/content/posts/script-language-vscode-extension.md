@@ -4,7 +4,7 @@ published: 2026-01-02
 description: 本文详细介绍为自定义脚本语言开发VSCode扩展的全过程，涵盖语法高亮、代码片段等基础功能，并指导打包发布与持续维护。
 tags: [ 日常 ]
 category: 'Examples'
-draft: "false"
+draft: false
 ---
 # 为自己的脚本语言编写VSCode支持扩展：从零到发布完整指南
 
