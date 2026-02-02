@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /_astro/
 
-Sitemap: https://clina.sylu.cc/sitemap-index.xml
+Sitemap: https://blog.150191.xyz/sitemap-index.xml
