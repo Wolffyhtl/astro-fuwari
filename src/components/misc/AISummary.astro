@@ -18,7 +18,7 @@ if (!content || content.trim() === '') {
         <img width="25" height="25" src="https://image.tianhw.top/gemini-color.png" alt="gemini-ai" loading="lazy" style="transition: none;">
         <span class="ai-title-text">AI 摘要</span>
       </div>
-      <div class="ai-tag">GPT-5</div>
+      <div class="ai-tag">Gemini 2.5 Pro</div>
     </div>
     <div class="ai-explanation" data-content={content}></div>
   </div>
@@ -30,7 +30,7 @@ if (!content || content.trim() === '') {
     return window.location.pathname.includes('/posts/');
   }
 
-  // 全局函数，用于初始化AI打字效果
+  // 全局函数,用于初始化AI打字效果
   function initAITyping() {
     // 只在包含 "posts" 的页面才执行AI总结功能
     if (!isPostsPage()) {

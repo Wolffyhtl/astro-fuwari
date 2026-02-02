@@ -93,7 +93,7 @@ const jsonLd = {
 					tags={entry.data.tags}
 					category={entry.data.category}
 				></PostMetadata>
-				{entry.data.description && <AISummary content={entry.data.description} class="onload-animation" />}
+				{entry.data.ai && <AISummary content={entry.data.ai} class="onload-animation" />}
 				{!entry.data.image && <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div>}
 			</div>
 
@@ -108,7 +108,7 @@ const jsonLd = {
 
 			{licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
-			
+
 
 			<Giscus
 				repo="Wolffyhtl/giscus-comments"

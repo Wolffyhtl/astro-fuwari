@@ -1,15 +1,16 @@
 ---
-title: 如何将你的Fuwari博客部署到Codeberg Pages
+title: 如何将你的Fuwari博客部署到Codeberg Pages (Forgejo Actions版)
 published: 2025-12-28
-description: 本文介绍将Fuwari博客部署到Codeberg Pages的方法：先申请CI权限，再配置仓库工作流文件，实现代码推送后自动构建并发布至专属页面。
+description: 本文介绍将Fuwari博客部署到Codeberg Pages的方法：先打开Actions，再配置仓库工作流文件，实现代码推送后自动构建并发布至专属页面。
+ai: 本文介绍将Fuwari博客部署到Codeberg Pages的方法：先打开Actions，再配置仓库工作流文件，实现代码推送后自动构建并发布至专属页面。
 tags: [日常]
-category: 'Examples'
+category: '日常'
 draft: false
 ---
 Codeberg Pages 是 Codeberg 官方提供的一个静态网站托管平台，类似于 Github Pages.<br>
-今天我们就要将Fuwari博客部署到Codeberg Pages.<br>
-首先，在[这里](https://codeberg.org/Codeberg-e.V./requests/issues)提起一个 Issue，标签选择 `ci` ，`Expected Resource Usage` 选 `medium`，`I would also like the following users to be added` 填 `@自己的 Codeberg 用户名`，其他自己看着填，等待审批通过。<br>
-审批通过后，打开你在Codeberg上的Fuwari仓库，在仓库根目录新建`.forgejo/workflows`文件夹.<br>
+今天我们就要将Fuwari博客部署到Codeberg Pages , 使用 Forgejo Actions.<br>
+首先，在仓库中点击设置，点击仓库功能 / 概览，打开 Actions，保存设置。<br> 
+接下来，回到仓库，在仓库根目录新建`.forgejo/workflows`文件夹.<br>
 在文件夹中添加 `astro.yml` 文件，内容如下：
 ```md
 name: Deploy Astro site to Pages
