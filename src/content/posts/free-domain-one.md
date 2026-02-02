@@ -2,11 +2,12 @@
 title: FreeDomainOne域名注册教程
 published: 2025-11-14
 description: 这篇教程介绍了在FreeDomainOne注册免费域名的步骤、可用后缀、重要续期规则，并提醒注意注册时的安全风险。
+ai: 这篇教程介绍了在FreeDomainOne注册免费域名的步骤、可用后缀、重要续期规则，并提醒注意注册时的安全风险。
 image: https://freedomain.one/site/fd/images/fd-logo.png
 tags:
   - 域名
   - 日常
-category: Examples
+category: 日常
 draft: false
 ---
 今天推荐的是FreeDomainOne的免费域名，他们提供了`publicvm.com`,`run.place`,`linkpc.net`和`work.gd`后缀的域名.<br>

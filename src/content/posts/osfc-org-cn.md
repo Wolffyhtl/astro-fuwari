@@ -3,10 +3,11 @@ title: osfc.org.cn && osfs.top域名注册教程
 image: https://registry.osfc.org.cn/logo.png
 published: 2025-11-14
 description: 该教程介绍如何在OSFC注册域名，需使用邀请链接获取积分，每个域名消耗50积分，暂不支持修改NS服务器，仅推荐体验。
+ai: 该教程介绍如何在OSFC注册域名，需使用邀请链接获取积分，每个域名消耗50积分，暂不支持修改NS服务器，仅推荐体验。
 tags:
   - 域名
   - 日常
-category: Examples
+category: 日常
 draft: false
 ---
 如题，今天讲的是这两个域名的注册教程，暂时都无法托管到Cloudflare.<br>

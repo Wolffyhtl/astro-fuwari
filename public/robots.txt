@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /_astro/
 
-Sitemap: https://clina.webn.cc/sitemap-index.xml
+Sitemap: https://blog.cli.gv.uy/sitemap-index.xml
