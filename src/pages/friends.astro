@@ -18,14 +18,14 @@ const items = [
     title: 'THW\'s Blog',
     imgurl: 'https://image.tianhw.top/avatar.webp',
     desc: '前途似海，来日方长',
-    siteurl: 'https://tianhw.top',
+    url: 'https://tianhw.top',
     tags: ['友链'],
   },
   {
     title:  'Rebel Zhang 的个人网站',
     imgurl: 'https://rebel1725.codeberg.page/assets/profile_light.svg',
     desc: '生活有起有落，但我依然热衷于尽可能充实地度过每一刻。',
-    siteurl: 'https://rebel1725.codeberg.page',
+    url: 'https://rebel1725.codeberg.page',
     tags: ['友链'],
   },
   {
@@ -99,7 +99,7 @@ const items = [
               <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 mb-1">{item.title}</div>
               <div class="text-50 text-sm font-medium">{item.desc}</div>
             </div>
-            <a href={item.siteurl} target="_blank" rel="noopener noreferrer" class="flex btn-regular w-[3.25rem] rounded-lg bg-[var(--enter-btn-bg)] hover:bg-[var(--enter-btn-bg-hover)] active:bg-[var(--enter-btn-bg-active)] active:scale-95">
+            <a href={item.url} target="_blank" rel="noopener noreferrer" class="flex btn-regular w-[3.25rem] rounded-lg bg-[var(--enter-btn-bg)] hover:bg-[var(--enter-btn-bg-hover)] active:bg-[var(--enter-btn-bg-active)] active:scale-95">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="transition text-[var(--primary)] text-4xl mx-auto iconify iconify--material-symbols" width="1em" height="1em" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7z"></path>
               </svg>
