@@ -50,7 +50,7 @@ export const siteConfig: SiteConfig = {
 	officialSites: [
 		{ url: "https://blog.150191.xyz", alias: "Netlify" },
 		{ url: "https://clina.zz.ac", alias: "EdgeOne Pages" },
-		{ url: "https://clina.sylu.cc", alias: "Codeberg Pages" },
+		{ url: "https://cli.loc.cc", alias: "Codeberg Pages" },
 		{ url: "https://cli.osfs.top", alias: "GitHub Pages"},
 		{ url: "https://blog.cli.gv.uy", alias: "CloudFlare Workers"},
 	],
