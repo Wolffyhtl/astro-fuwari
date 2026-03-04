@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['LXGWWenKai', 'sans-serif', ...defaultTheme.fontFamily.sans],
+        sans: ['LXGW WenKai', 'sans-serif', ...defaultTheme.fontFamily.sans],
       },
     },
   },

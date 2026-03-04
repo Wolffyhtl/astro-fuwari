@@ -2,6 +2,7 @@
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import { SEO } from "astro-seo";
 import ConfigCarrier from "@components/ConfigCarrier.astro";
 import { profileConfig, siteConfig } from "@/config";
 import {
@@ -101,12 +102,16 @@ const bannerOffset =
 		<meta name="generator" content={Astro.generator} />
 		{favicons.map(favicon => (
 			<link rel="icon"
-				  href={favicon.src.startsWith('/') ? url(favicon.src) : favicon.src}
-				  sizes={favicon.sizes}
-				  media={favicon.theme && `(prefers-color-scheme: ${favicon.theme})`}
+				href={favicon.src.startsWith('/') ? url(favicon.src) : favicon.src}
+				sizes={favicon.sizes}
+				media={favicon.theme && `(prefers-color-scheme: ${favicon.theme})`}
 			/>
 		))}
 
+		<SEO
+			title={pageTitle}
+			description={description || pageTitle}
+		/>
 		<!-- Set the theme before the page is rendered to avoid a flash -->
 		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
 			// Load the theme from local storage

@@ -12,8 +12,8 @@ function joinUrl(...parts: string[]): string {
 	return joined.replace(/\/+/g, "/");
 }
 
-export function getPostUrlBySlug(slug: string): string {
-	return url(`/posts/${slug}/`);
+export function getPostUrlBySlug(id: string): string {
+	return url(`/posts/${id}/`);
 }
 
 export function getTagUrl(tag: string): string {
@@ -37,6 +37,10 @@ export function getDir(path: string): string {
 		return "/";
 	}
 	return path.substring(0, lastSlashIndex + 1);
+}
+
+export function getFileDirFromPath(filePath: string): string { 
+	return filePath.replace(/^src\//, '').replace(/\/[^\/]+$/, ''); 
 }
 
 export function url(path: string) {
