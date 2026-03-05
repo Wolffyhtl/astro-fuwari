@@ -71,14 +71,14 @@ export const profileConfig: ProfileConfig = {
 	bio: "¡El pueblo unido jamás será vencido!",
 	links: [
 		{
-			name: "Discord",
-			icon: "fa6-brands:discord",
-			url: "https://discordapp.com/users/1347933833143517264",
+			name: "XMPP",
+			icon: "simple-icons:xmpp",
+			url: "https://xmpp.link/#clina@yax.im",
 		},
 		{
-			name: "Steam",
-			icon: "fa6-brands:steam",
-			url: "https://steamcommunity.com/profiles/76561199828611059",
+			name: "Matrix",
+			icon: "simple-icons:matrix",
+			url: "https://matrix.to/#/@lean:mozilla.org",
 		},
 		{
 			name: "GitHub",
@@ -96,6 +96,6 @@ export const licenseConfig: LicenseConfig = {
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	// Note: Some styles (such as background color) are being overridden, see the astro.config.mjs file.
-	// Please select a dark theme, as this blog theme currently only supports dark background color
-	theme: "github-dark",
+	darkTheme: "github-dark",
+	lightTheme: "github-light",
 };

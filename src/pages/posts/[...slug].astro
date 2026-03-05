@@ -1,5 +1,6 @@
 ---
 import path from "node:path";
+import { render } from "astro:content";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
 import Giscus from "../../components/misc/Giscus.astro";
@@ -7,7 +8,7 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@utils/content-utils";
-import { getDir, getPostUrlBySlug } from "@utils/url-utils";
+import { getDir, getPostUrlBySlug, getFileDirFromPath } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
 import { licenseConfig } from "src/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
@@ -20,13 +21,13 @@ import AISummary from "@components/misc/AISummary.astro";
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
 	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: entry.id },
 		props: { entry },
 	}));
 }
 
 const { entry } = Astro.props;
-const renderResult = await entry.render();
+const renderResult = await render(entry);
 const { Content, headings, remarkPluginFrontmatter } = renderResult;
 
 const jsonLd = {
@@ -99,14 +100,14 @@ const jsonLd = {
 
 			<!-- cover -->
 			{entry.data.image &&
-				<ImageWrapper id="post-cover" src={entry.data.image} basePath={path.join("content/posts/", getDir(entry.id))} class="mb-8 rounded-xl banner-container onload-animation" />
+				<ImageWrapper id="post-cover" src={entry.data.image} basePath={getFileDirFromPath(entry.filePath || '')} class="mb-8 rounded-xl banner-container onload-animation"/>
 			}
 
-			<Markdown class="mb-6 markdown-content onload-animation">
+			<Markdown class="mb-6 markdown-content onload-animation" basePath={path.join("content/posts/", getDir(entry.id))}>
 				<Content />
 			</Markdown>
 
-			{licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
+			{licenseConfig.enable && <License title={entry.data.title} slug={entry.id} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
 
 

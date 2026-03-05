@@ -26,7 +26,7 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://clina.webn.cc/",
+	site: "https://clina.zz.ac/",
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
@@ -56,7 +56,8 @@ export default defineConfig({
 			},
 		}),
 		expressiveCode({
-			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
+			themes: [expressiveCodeConfig.darkTheme, expressiveCodeConfig.lightTheme],
+			useDarkModeMediaQuery: false,
 			plugins: [
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),
@@ -66,7 +67,7 @@ export default defineConfig({
 			defaultProps: {
 				wrap: true,
 				overridesByLang: {
-					'shellsession': {
+					shellsession: {
 						showLineNumbers: false,
 					},
 				},
