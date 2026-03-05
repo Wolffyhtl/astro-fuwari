@@ -1,8 +1,8 @@
+@import url("https://fontsapi.zeoseven.com/292/main/result.css");
+
 @font-face {
-  font-family: "LXGWWenKai";
-  src:local("LXGWWenKai"),url('/public/fonts/LXGWWenKai-Regular.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 400;
+  font-family: "LXGW WenKai";
+  font-weight: normal;
   font-display: swap;
   unicode-range:U+d65f-d7a3,U+e76c,U+e7c7-e7c8,U+e7e7-e7f3,U+e815-e847;
   }
