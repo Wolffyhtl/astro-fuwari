@@ -38,7 +38,8 @@ export default defineConfig({
 	},
 	experimental: {
 		// 队列渲染以优化性能（实验性）
-		queuedRendering: { enabled: true }, 
+		queuedRendering: { enabled: true },
+	},
 	integrations: [
 		tailwind({
 			nesting: true,
