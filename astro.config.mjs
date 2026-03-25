@@ -32,6 +32,13 @@ export default defineConfig({
 	site: "https://blog.150191.xyz/",
 	base: "/",
 	trailingSlash: "always",
+	image: {
+		// 全局响应式布局
+		layout: "constrained",
+	},
+	experimental: {
+		// 队列渲染以优化性能（实验性）
+		queuedRendering: { enabled: true }, 
 	integrations: [
 		tailwind({
 			nesting: true,
