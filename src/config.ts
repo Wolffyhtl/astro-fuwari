@@ -25,7 +25,7 @@ export const siteConfig: SiteConfig = {
 			url: "", // (Optional) URL link to the original artwork or artist's page
 		},
 	},
-/*	background: {
+	/*	background: {
 		enable: true, // Enable background image
 		src: "https://imgapi.xl0408.top/index.php", // Background image URL (supports HTTPS)
 		position: "center", // Background position: 'top', 'center', 'bottom'
@@ -51,8 +51,6 @@ export const siteConfig: SiteConfig = {
 		{ url: "https://blog.150191.xyz", alias: "Netlify" },
 		{ url: "https://clina.zz.ac", alias: "EdgeOne Pages" },
 		{ url: "https://cli.loc.cc", alias: "Codeberg Pages" },
-		{ url: "https://cli.osfs.top", alias: "GitHub Pages"},
-		{ url: "https://blog.cli.gv.uy", alias: "CloudFlare Workers"},
 	],
 };
 

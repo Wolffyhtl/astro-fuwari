@@ -1,7 +1,9 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "astro/zod";
+
 const postsCollection = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/posts/" }),
+	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts/" }),
 	schema: z.object({
 		title: z.string(),
 		published: z.date(),
@@ -12,7 +14,7 @@ const postsCollection = defineCollection({
 		tags: z.array(z.string()).optional().default([]),
 		category: z.string().optional().nullable().default(""),
 		lang: z.string().optional().default(""),
-        ai: z.string().optional().default(""),
+		ai: z.string().optional().default(""),
 
 		/* For internal use */
 		prevTitle: z.string().default(""),
@@ -21,9 +23,9 @@ const postsCollection = defineCollection({
 		nextSlug: z.string().default(""),
 	}),
 });
-const specCollection = defineCollection({ 
-        loader: glob({ pattern: "**/*.md", base: "./src/content/spec/" }), 
-        schema: z.object({}), 
+const specCollection = defineCollection({
+	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/spec/" }),
+	schema: z.object({}),
 });
 export const collections = {
 	posts: postsCollection,

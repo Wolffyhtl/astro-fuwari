@@ -1,3 +1,328 @@
+---
+title: 对 Fuwari 进行亿些改动
+published: 2026-03-20
+description: '对 Fuwari 进行的改动总结'
+tags: [日常, Fuwari, 博客]
+category: '日常'
+draft: false 
+---
+# 1. 增加评论
+
+参考[这篇文章](https://blog.tianhw.top/posts/fuwari-giscus/)
+
+# 2. 增加友链
+
+参考[这篇文章](https://blog.aulypc0x0.online/posts/website/add_friendspage_in_fuwari/)
+
+# 3. 增加访问统计卡片
+
+参考[这篇文章](https://blog.tianhw.top/posts/fuwari-umami-stats/)
+
+# 4. 图片标题
+
+参考[这个 PR](https://github.com/saicaca/fuwari/pull/351)
+
+# 5. 音乐播放器
+
+参考[这篇文章](https://ikamusume7.org/posts/frontend/some_small_code_changes2/#%E5%9B%9B%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8)
+
+# 6. Codeberg 仓库卡片
+
+在 `src/plugins` 新建 `rehype-component-codeberg-card.mjs` 文件，并写入以下内容：
+
+```js title="rehype-component-codeberg-card.mjs"
+/// <reference types="mdast" />
+import { h } from "hastscript";
+
+/**
+ * Creates a Codeberg Card component.
+ *
+ * @param {Object} properties - The properties of the component.
+ * @param {string} properties.repo - The Codeberg repository in the format "owner/repo".
+ * @param {import('mdast').RootContent[]} children - The children elements of the component.
+ * @returns {import('mdast').Parent} The created Codeberg Card component.
+ */
+export function CodebergCardComponent(properties, children) {
+ if (Array.isArray(children) && children.length !== 0)
+  return h("div", { class: "hidden" }, [
+   'Invalid directive. ("codeberg" directive must be leaf type "::codeberg{repo="owner/repo"}")',
+  ]);
+
+ if (!properties.repo || !properties.repo.includes("/"))
+  return h(
+   "div",
+   { class: "hidden" },
+   'Invalid repository. ("repo" attributte must be in the format "owner/repo")',
+  );
+
+ const repo = properties.repo;
+ const cardUuid = `GC${Math.random().toString(36).slice(-6)}`; // Collisions are not important
+
+ const nAvatar = h(`div#${cardUuid}-avatar`, { class: "gc-avatar" });
+ const nLanguage = h(
+  `span#${cardUuid}-language`,
+  { class: "gc-language" },
+  "Waiting...",
+ );
+
+ const nTitle = h("div", { class: "gc-titlebar" }, [
+  h("div", { class: "gc-titlebar-left" }, [
+   h("div", { class: "gc-owner" }, [
+    nAvatar,
+    h("div", { class: "gc-user" }, repo.split("/")[0]),
+   ]),
+   h("div", { class: "gc-divider" }, "/"),
+   h("div", { class: "gc-repo" }, repo.split("/")[1]),
+  ]),
+  h("div", { class: "codeberg-logo" }),
+ ]);
+
+ const nDescription = h(
+  `div#${cardUuid}-description`,
+  { class: "gc-description" },
+  "Waiting for codeberg.org/api/v1...",
+ );
+
+ const nStars = h(`div#${cardUuid}-stars`, { class: "gc-stars" }, "00K");
+ const nForks = h(`div#${cardUuid}-forks`, { class: "gc-forks" }, "0K");
+ const nLicense = h(`div#${cardUuid}-license`, { class: "gc-license" }, "0K");
+
+ const nScript = h(
+  `script#${cardUuid}-script`,
+  { type: "text/javascript", defer: true },
+  `
+      fetch('https://codeberg.org/api/v1/repos/${repo}', { referrerPolicy: "no-referrer" }).then(response => response.json()).then(data => {
+        document.getElementById('${cardUuid}-description').innerText = data.description?.replace(/:[a-zA-Z0-9_]+:/g, '') || "Description not set";
+        document.getElementById('${cardUuid}-language').innerText = data.language;
+        document.getElementById('${cardUuid}-forks').innerText = Intl.NumberFormat('en-us', { notation: "compact", maximumFractionDigits: 1 }).format(data.forks_count).replaceAll("\u202f", '');
+        document.getElementById('${cardUuid}-stars').innerText = Intl.NumberFormat('en-us', { notation: "compact", maximumFractionDigits: 1 }).format(data.stars_count).replaceAll("\u202f", '');
+        const avatarEl = document.getElementById('${cardUuid}-avatar');
+        avatarEl.style.backgroundImage = 'url(' + data.owner.avatar_url + ')';
+        avatarEl.style.backgroundColor = 'transparent';
+        // Codeberg API does not provide license information, hiding the license field
+        document.getElementById('${cardUuid}-license').style.display = 'none';
+        document.getElementById('${cardUuid}-card').classList.remove("fetch-waiting");
+        console.log("[CODEBERG-CARD] Loaded card for ${repo} | ${cardUuid}.")
+      }).catch(err => {
+        const c = document.getElementById('${cardUuid}-card');
+        c?.classList.add("fetch-error");
+        console.warn("[CODEBERG-CARD] (Error) Loading card for ${repo} | ${cardUuid}.")
+      })
+    `,
+ );
+
+ return h(
+  `a#${cardUuid}-card`,
+  {
+   class: "card-codeberg fetch-waiting no-styling",
+   href: `https://codeberg.org/${repo}`,
+   target: "_blank",
+   repo,
+  },
+  [
+   nTitle,
+   nDescription,
+   h("div", { class: "gc-infobar" }, [nStars, nForks, nLicense, nLanguage]),
+   nScript,
+  ],
+ );
+}
+```
+
+然后，在 `astro.config.mjs` 中添加以下内容：
+
+```diff lang="js" title="astro.config.mjs" collapse={1-20, 24-133, 137-186}
+import sitemap from "@astrojs/sitemap";
+import svelte from "@astrojs/svelte";
+import tailwind from "@astrojs/tailwind";
+import mdx from '@astrojs/mdx';
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import swup from "@swup/astro";
+import expressiveCode from "astro-expressive-code";
+import icon from "astro-icon";
+import { defineConfig } from "astro/config";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeComponents from "rehype-components"; /* Render the custom directive content */
+import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
+import remarkDirective from "remark-directive"; /* Handle directives */
+import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
+import remarkMath from "remark-math";
+import remarkSectionize from "remark-sectionize";
+import { expressiveCodeConfig } from "./src/config.ts";
+import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
+import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
++import { CodebergCardComponent } from "./src/plugins/rehype-component-codeberg-card.mjs";
+import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
+import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
+import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
+import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
+import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
+
+// https://astro.build/config
+export default defineConfig({
+ site: "https://blog.150191.xyz",
+ base: "/",
+ trailingSlash: "always",
+ image: {
+  // 全局响应式布局
+  layout: "constrained",
+ },
+ experimental: {
+  // Rust 编译器以提升构建性能（实验性）
+  // 队列渲染以优化性能（实验性）
+  queuedRendering: { enabled: true }, 
+ },
+ integrations: [
+  tailwind({
+   nesting: true,
+  }),
+  swup({
+   theme: false,
+   animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
+   // the default value `transition-` cause transition delay
+   // when the Tailwind class `transition-all` is used
+   containers: ["main", "#toc"],
+   smoothScrolling: true,
+   cache: true,
+   preload: true,
+   accessibility: true,
+   updateHead: true,
+   updateBodyClass: false,
+   globalInstance: true,
+  }),
+  icon({
+   include: {
+    "preprocess: vitePreprocess(),": ["*"],
+    "fa6-brands": ["*"],
+    "fa6-regular": ["*"],
+    "fa6-solid": ["*"],
+   },
+  }),
+  expressiveCode({
+   themes: [expressiveCodeConfig.darkTheme, expressiveCodeConfig.lightTheme],
+   useDarkModeMediaQuery: false,
+   plugins: [
+    pluginCollapsibleSections(),
+    pluginLineNumbers(),
+    pluginLanguageBadge(),
+    pluginCustomCopyButton()
+   ],
+   defaultProps: {
+    wrap: true,
+    overridesByLang: {
+     shellsession: {
+      showLineNumbers: false,
+     },
+    },
+   },
+   styleOverrides: {
+    codeBackground: "var(--codeblock-bg)",
+    borderRadius: "0.75rem",
+    borderColor: "none",
+    codeFontSize: "0.875rem",
+    codeFontFamily: "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+    codeLineHeight: "1.5rem",
+    frames: {
+     editorBackground: "var(--codeblock-bg)",
+     terminalBackground: "var(--codeblock-bg)",
+     terminalTitlebarBackground: "var(--codeblock-topbar-bg)",
+     editorTabBarBackground: "var(--codeblock-topbar-bg)",
+     editorActiveTabBackground: "none",
+     editorActiveTabIndicatorBottomColor: "var(--primary)",
+     editorActiveTabIndicatorTopColor: "none",
+     editorTabBarBorderBottomColor: "var(--codeblock-topbar-bg)",
+     terminalTitlebarBorderBottomColor: "none"
+    },
+    textMarkers: {
+     delHue: 0,
+     insHue: 180,
+     markHue: 250
+    }
+   },
+   frames: {
+    showCopyToClipboardButton: false,
+   }
+  }),
+        svelte(),
+  sitemap(),
+  mdx(),
+ ],
+ markdown: {
+  remarkPlugins: [
+   remarkMath,
+   remarkReadingTime,
+   remarkExcerpt,
+   remarkGithubAdmonitionsToDirectives,
+   remarkDirective,
+   remarkSectionize,
+   parseDirectiveNode,
+  ],
+  rehypePlugins: [
+   rehypeKatex,
+   rehypeSlug,
+   [
+    rehypeComponents,
+    {
+     components: {
++      codeberg: CodebergCardComponent,
+      github: GithubCardComponent,
+      note: (x, y) => AdmonitionComponent(x, y, "note"),
+      tip: (x, y) => AdmonitionComponent(x, y, "tip"),
+      important: (x, y) => AdmonitionComponent(x, y, "important"),
+      caution: (x, y) => AdmonitionComponent(x, y, "caution"),
+      warning: (x, y) => AdmonitionComponent(x, y, "warning"),
+     },
+    },
+   ],
+   [
+    rehypeAutolinkHeadings,
+    {
+     behavior: "append",
+     properties: {
+      className: ["anchor"],
+     },
+     content: {
+      type: "element",
+      tagName: "span",
+      properties: {
+       className: ["anchor-icon"],
+       "data-pagefind-ignore": true,
+      },
+      children: [
+       {
+        type: "text",
+        value: "#",
+       },
+      ],
+     },
+    },
+   ],
+  ],
+ },
+ vite: {
+  build: {
+   rollupOptions: {
+    onwarn(warning, warn) {
+     // temporarily suppress this warning
+     if (
+      warning.message.includes("is dynamically imported by") &&
+      warning.message.includes("but also statically imported by")
+     ) {
+      return;
+     }
+     warn(warning);
+    },
+   },
+  },
+ },
+});
+```
+
+然后，在 `markdown-extend.styl` 添加以下内容：
+
+```styl title="markdown-extend.styl" ins={229-374} collapse={1-227, 376-386}
 .custom-md
 
   blockquote.admonition
@@ -163,7 +488,7 @@ a.card-github
   .gc-language
     display: none
 
-  .gc-stars, .gc-forks, .gc-license, .gc-filetype, .gc-filesize, .gc-updated, .github-logo
+  .gc-stars, .gc-forks, .gc-license, .github-logo
     font-weight: 500
     font-size: 0.875rem
     opacity: 0.9;
@@ -197,16 +522,6 @@ a.card-github
   .gc-forks
     &:before
       mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16'%3E%3Cpath d='M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z'%3E%3C/path%3E%3C/svg%3E")
-
-  .gc-filetype
-    &:before
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16'%3E%3Cpath d='M4 0h5.5L14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2Zm5 1.5V5h3.5L9 1.5Z'%3E%3C/path%3E%3C/svg%3E")
-  .gc-filesize
-    &:before
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0s224 35.8 224 80m-54.8 134.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3M0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432z'/%3E%3C/svg%3E")
-  .gc-updated
-    &:before
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16'%3E%3Cpath d='M8 1.5a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13Zm0 1.5a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm.75 1.75a.75.75 0 0 0-1.5 0V8c0 .27.15.52.39.65l2.5 1.5a.75.75 0 1 0 .77-1.3L8.75 7.55V4.75Z'%3E%3C/path%3E%3C/svg%3E")
 
   .github-logo
     font-size: 1.25rem
@@ -394,3 +709,26 @@ a.card-codeberg.fetch-error
   transition-property: all
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
   transition-duration: 0.15s
+```
+
+效果：
+
+::codeberg{repo="Clina/fuwari"}
+
+# 7. 增加图片标题
+
+参考[这个 PR](https://github.com/saicaca/fuwari/pull/351)
+
+# 8. 更改字体
+
+参考[这篇文章](https://blog.aulypc0x0.online/posts/use_custom_fonts_in_fuwari)
+
+# 9. 亮色代码块
+
+参考[这个 PR](https://github.com/saicaca/fuwari/pull/593)
+
+# 10. GitHub 文件卡片
+
+参考[这个 PR](https://github.com/saicaca/fuwari/pull/700)
+
+未完待续...
