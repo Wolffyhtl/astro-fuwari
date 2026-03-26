@@ -48,9 +48,8 @@ export const siteConfig: SiteConfig = {
 		// }
 	],
 	officialSites: [
-		{ url: "https://blog.150191.xyz", alias: "Netlify" },
-		{ url: "https://clina.zz.ac", alias: "EdgeOne Pages" },
-		{ url: "https://cli.loc.cc", alias: "Codeberg Pages" },
+		{ url: "https://blog.150191.xyz", alias: "Stable" },
+		{ url: "https://cli.loc.cc", alias: "Develop" },
 	],
 };
 
