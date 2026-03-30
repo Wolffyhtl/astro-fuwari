@@ -3,7 +3,7 @@ title: FreeDomainOne 域名注册教程
 published: 2025-11-14
 description: 这篇教程介绍了在 FreeDomainOne 注册免费域名的步骤、可用后缀、重要续期规则，并提醒注意注册时的安全风险。
 ai: 这篇教程介绍了在 FreeDomainOne 注册免费域名的步骤、可用后缀、重要续期规则，并提醒注意注册时的安全风险。
-image: https://freedomain.one/site/fd/images/fd-logo.png
+image: https://image.150191.xyz/images/freedomainone.webp
 tags:
   - 域名
   - 日常
@@ -16,6 +16,8 @@ draft: false
 然后，回到他们的官网，输入你想要的域名前缀并选择域名后缀，完成后点击`Check Availability`,检查域名是否可用；<br>
 如果可用,点击`Claim This Name >>`按钮,进入付款页面;<br>
 进入付款页面后,保持默认设置,点击`SUBMIT >>`按钮,注册完成.注意,要记住 Free renew after 后面的日期,以后有用.<br>
+
 ### 注意：注册的域名必须在 Free renew after 后面的日期以后一个月内续期，否则域名会被删除. <br>
+
 教程至此结束.<br>
 补充：推荐使用[https://www.emailtick.com/](https://www.emailtick.com) 的临时邮箱注册,因为当你输错用户名和密码时，这个网站会把使用这个用户名的用户注册时用的邮箱直接显示出来,有安全风险.

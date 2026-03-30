@@ -1,0 +1,24 @@
+---
+import WidgetLayout from "./WidgetLayout.astro";
+
+interface Props {
+	class?: string;
+	style?: string;
+}
+const { class: className, style } = Astro.props;
+---
+
+<WidgetLayout name="赞助" id="sponsors" class:list={[className]} {style}>
+    <div class="flex flex-col gap-2"> 
+        <a href="https://dash.domain.digitalplat.org/signup?ref=8npExB6E3x" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid #d6dbe7;border-radius:12px;background:#ffffff;color:#0f172a;text-decoration:none;font:500 13px/1.25 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;box-shadow:0 1px 2px rgba(15,23,42,0.06);">
+            <span style="display:inline-flex;align-items:center;justify-content:center;padding:4px 8px;border-radius:9999px;background:#eff6ff;color:#1d4ed8;font:600 11px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:0.02em;text-transform:uppercase;">DigitalPlat</span>
+            <span style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-weight:600;">This Website is Powered by DigitalPlat FreeDomain</span>
+                <span style="color:#475569;">Get a free domain from DigitalPlat.</span>
+            </span>
+        </a>
+        <a href="https://www.rainyun.com/MTAzODA1MA==_" target="_blank" rel="nofollow">
+            <img class="w-full rounded-md dark:invert dark:hue-rotate-180" src="https://image.150191.xyz/images/rainyun.webp" alt="Rainyun Sponsor" loading="lazy" decoding="async" width="1024" height="281">
+        </a>
+    </div>
+</WidgetLayout>

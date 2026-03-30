@@ -3,7 +3,7 @@ title: ZoneABC 域名注册教程
 published: 2025-11-14
 description: 这篇教程介绍了如何在 ZoneABC 注册域名，包括可用后缀、注册步骤、积分规则及 DNS 限制，适合用作备用域名。
 ai: 这篇教程介绍了如何在 ZoneABC 注册域名，包括可用后缀、注册步骤、积分规则及 DNS 限制，适合用作备用域名。
-image: https://avatars.githubusercontent.com/u/213057426?v=4
+image: https://image.150191.xyz/images/zoneabc.webp
 tags:
   - 域名
   - 日常

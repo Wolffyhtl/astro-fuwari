@@ -6,6 +6,7 @@ import Tag from "./Tags.astro";
 import DomainSwitcher from "./DomainSwitcher.astro";
 import UmamiStats from "./UmamiStats.astro";
 import Music from './Music.astro'
+import Sponsors from "./Sponsors.astro";
 interface Props {
 	class?: string;
 	headings?: MarkdownHeading[];
@@ -22,6 +23,7 @@ const className = Astro.props.class;
         <Categories class="onload-animation" style="animation-delay: 150ms"></Categories>
         <UmamiStats class="onload-animation" style="animation-delay: 200ms"></UmamiStats>
         <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
-        <Music class="onload-animation" style="animation-delay: 200ms"></Music>
+        <Sponsors class="onload-animation" style="animation-delay: 200ms"></Sponsors>
+        <Music class="onload-animation" style="animation-delay: 50ms"></Music>
     </div>
 </div>

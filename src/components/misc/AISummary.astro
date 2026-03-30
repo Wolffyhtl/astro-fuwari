@@ -1,13 +1,13 @@
 ---
 export interface Props {
-  content: string;
+	content: string;
 }
 
 const { content } = Astro.props;
 
 // 如果没有内容，不渲染组件
-if (!content || content.trim() === '') {
-  return null;
+if (!content || content.trim() === "") {
+	return null;
 }
 ---
 
@@ -15,7 +15,7 @@ if (!content || content.trim() === '') {
   <div class="ai-summary">
     <div class="ai-title">
       <div class="ai-title-left">
-        <img width="25" height="25" src="/photos/gemini-color.png" alt="gemini-ai" loading="lazy" style="transition: none;">
+        <img width="25" height="25" src="https://image.150191.xyz/images/gemini-color.webp" alt="gemini-ai" loading="lazy" style="transition: none;">
         <span class="ai-title-text">AI 摘要</span>
       </div>
       <div class="ai-tag">Gemini 2.5 Pro</div>
