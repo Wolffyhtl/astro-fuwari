@@ -28,8 +28,8 @@ const { class: className, style } = Astro.props;
 <script>
 const UMAMI_CONFIG = {
     baseUrl: 'https://cloud.umami.is/analytics/us/api',
-    websiteId: ${import.meta.env.UMAMI_WEBSITE_ID},
-    shareToken: ${import.meta.env.UMAMI_SHARE_TOKEN}
+    websiteId: 'b0aad9b4-7587-4b16-a7f5-14999733afad',
+    shareToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaGFyZUlkIjoiZmJjZDA5ODAtNjBiMi00ODMzLTg0NWQtM2ViZGY4ODFmMWJiIiwic2hhcmVUeXBlIjoxLCJwYXJhbWV0ZXJzIjp7InV0bSI6ZmFsc2UsImdvYWxzIjpmYWxzZSwiZXZlbnRzIjp0cnVlLCJjb21wYXJlIjpmYWxzZSwiZnVubmVscyI6ZmFsc2UsInJldmVudWUiOmZhbHNlLCJqb3VybmV5cyI6ZmFsc2UsIm92ZXJ2aWV3Ijp0cnVlLCJyZWFsdGltZSI6ZmFsc2UsInNlc3Npb25zIjpmYWxzZSwiYnJlYWtkb3duIjpmYWxzZSwicmV0ZW50aW9uIjpmYWxzZSwiYXR0cmlidXRpb24iOmZhbHNlLCJwZXJmb3JtYW5jZSI6ZmFsc2V9LCJ3ZWJzaXRlSWQiOiJiMGFhZDliNC03NTg3LTRiMTYtYTdmNS0xNDk5OTczM2FmYWQiLCJpYXQiOjE3NzUwNDg4MzJ9.6b4hpa982r0Y8n9WXwr4CNZBJbgt5-7qzgmIzbeo3ro'
 
 function formatNumber(num: number): string {
     if (num >= 1000000) {
