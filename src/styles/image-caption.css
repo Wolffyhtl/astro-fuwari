@@ -1,3 +1,5 @@
+@reference "./main.css";
+
 figure.image-caption {
   inline-size: fit-content;
   margin-inline: auto;

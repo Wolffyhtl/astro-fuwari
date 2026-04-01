@@ -1,4 +1,5 @@
 @import url("https://fontsapi.zeoseven.com/292/main/result.css");
+@reference "tailwindcss";
 
 @font-face {
   font-family: "LXGW WenKai";

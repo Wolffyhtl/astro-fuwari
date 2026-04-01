@@ -1,4 +1,5 @@
-@import './main.css';
+@reference "./main.css";
+
 .custom-md {
     h1 {
         @apply text-3xl;
@@ -6,16 +7,16 @@
 
     h1, h2, h3, h4, h5, h6 {
         .anchor {
-            @apply transition -m-0.5 ml-[0.2ch] p-0.5 select-none opacity-0 no-underline !important;
+            @apply transition -m-0.5! ml-[0.2ch]! p-0.5! select-none! opacity-0! no-underline!;
 
             .anchor-icon {
-                @apply mx-[0.45ch] !important;
+                @apply mx-[0.45ch]!;
             }
         }
 
         &:hover {
             .anchor {
-                @apply opacity-100 !important;
+                @apply opacity-100!;
             }
         }
     }
@@ -119,4 +120,27 @@
         margin: 1em 0;
     }
     
+    table {
+        @apply w-full border-collapse my-4;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+
+    th, td {
+        @apply border border-[var(--line-color)] px-3 py-2 text-left;
+        min-width: 120px;
+    }
+
+    th {
+        @apply bg-[var(--btn-regular-bg)] font-semibold text-[var(--btn-content)];
+    }
+
+    td {
+        @apply bg-[var(--card-bg)];
+    }
+
+    tr:nth-child(even) td {
+        @apply bg-[var(--btn-plain-bg-hover)];
+    }
 }
