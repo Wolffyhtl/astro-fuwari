@@ -1,7 +1,8 @@
+@import url("https://fontsapi.zeoseven.com/292/main/result.css");
+
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
-@import url("https://fontsapi.zeoseven.com/292/main/result.css");
 /* ========== CSS 变量定义 - 基于参考代码 ========== */
 :root {
   /* 浅色模式变量 - 保持原有颜色 */
@@ -136,9 +137,8 @@ body {
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans:
-    Roboto, sans-serif, ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "LXGW WenKai", sans-serif;
+
 }
 
 @utility card-base {
@@ -311,12 +311,6 @@ body {
 
 .collapsed {
     height: var(--collapsedHeight);
-}
-
-@font-face {
-    font-family: 'LXGW WenKai';
-    font-weight: normal;
-    font-display: swap;
 }
 
 .custom-md spoiler {
