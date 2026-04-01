@@ -28,9 +28,8 @@ const { class: className, style } = Astro.props;
 <script>
 const UMAMI_CONFIG = {
     baseUrl: 'https://cloud.umami.is/analytics/us/api',
-    websiteId: 'b0aad9b4-7587-4b16-a7f5-14999733afad',
-    shareToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3ZWJzaXRlSWQiOiJiMGFhZDliNC03NTg3LTRiMTYtYTdmNS0xNDk5OTczM2FmYWQiLCJpYXQiOjE3NjE0Nzk2NTN9.BYKzrl-1NlXSnUHpJUofonV98NnuLinfvHn1G0nyL9o'
-};
+    websiteId: ${import.meta.env.UMAMI_WEBSITE_ID},
+    shareToken: ${import.meta.env.UMAMI_SHARE_TOKEN}
 
 function formatNumber(num: number): string {
     if (num >= 1000000) {
