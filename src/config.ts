@@ -48,8 +48,8 @@ export const siteConfig: SiteConfig = {
 		// }
 	],
 	officialSites: [
-		{ url: "https://blog.150191.xyz", alias: "Stable" },
-		{ url: "https://cli.loc.cc", alias: "Develop" },
+		{ url: "https://blog.clina.top", alias: "Stable" },
+		{ url: "https://blog.150191.xyz", alias: "Develop" },
 	],
 };
 
