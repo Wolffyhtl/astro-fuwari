@@ -28,6 +28,7 @@
 		"@expressive-code/plugin-line-numbers": "^0.41.7",
 		"@fastify/deepmerge": "^3.2.1",
 		"@fontsource-variable/jetbrains-mono": "^5.2.8",
+		"@fontsource/maple-mono": "^5.2.6",
 		"@fontsource/roboto": "^5.2.10",
 		"@iconify-json/fa6-brands": "^1.2.6",
 		"@iconify-json/fa6-regular": "^1.2.4",
