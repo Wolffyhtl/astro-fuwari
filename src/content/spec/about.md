@@ -161,7 +161,6 @@
         TECH STACK
     </div>
 
-    <!-- 核心技术栈 -->
 <div style="margin: 50px 0 40px 0;">
     <div class="tech-card-grid">
             <!-- Astro 卡片 -->
