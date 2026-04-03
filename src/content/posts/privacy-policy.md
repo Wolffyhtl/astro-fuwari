@@ -15,9 +15,11 @@ draft: false
 - [Giscus](https://giscus.app)：提供评论功能，由 Github 提供
 
 ### Functionality cookies（功能性cookies）
+
 - 无
 
 ### Tracking cookies（追蹤cookies）
+
 - [Microsoft Clarity](https://clarity.microsoft.com)：收集站点访问情况
 
 *latest update: 2026/02/04*

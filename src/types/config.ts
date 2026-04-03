@@ -97,6 +97,7 @@ export type BlogPostData = {
 	prevSlug?: string;
 	nextTitle?: string;
 	nextSlug?: string;
+	pinned?: boolean;
 };
 
 // This type isn't exposed directly, only through a transitive dependency that isn't accessible
