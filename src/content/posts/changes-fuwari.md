@@ -3,8 +3,9 @@ title: 对 Fuwari 进行亿些改动
 published: 2026-03-20
 description: '对 Fuwari 进行的改动总结'
 tags: [日常, Fuwari, 博客]
-category: '日常'
+category: '改动'
 draft: false 
+ai: 本文汇总了对Fuwari博客的多项自定义改动，包括添加评论、友链、访问统计、音乐播放器、Codeberg仓库卡片、图片标题、更换字体、亮色代码块及GitHub文件卡片等，并附有相关参考链接，持续优化博客功能与体验。
 ---
 # 1. 增加评论
 
@@ -162,7 +163,7 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 // https://astro.build/config
 export default defineConfig({
- site: "https://blog.150191.xyz",
+ site: "https://cli.loc.cc",
  base: "/",
  trailingSlash: "always",
  image: {
