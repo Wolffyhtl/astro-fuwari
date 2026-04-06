@@ -43,7 +43,7 @@
             </a>
         </div>
         <p style="font-size: 16px; line-height: 1.6; color: #4b5563; margin: 0;" class="about-description">
-            你好呀！👋 我是 Clina，一位住在中华人民共和国的初中生。我的个人博客累计浏览量已达 3.9K，衷心感谢大家的支持！
+            你好呀！👋 我是 Clina，一位住在中华人民共和国的初中生。我热衷于开源项目贡献，是 komari-document 的贡献者之一。我的个人博客累计浏览量已达 3.9K，衷心感谢大家的支持！
         </p>
     </div>
 </div>
