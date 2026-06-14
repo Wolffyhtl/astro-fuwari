@@ -48,8 +48,8 @@ export const siteConfig: SiteConfig = {
 		// }
 	],
 	officialSites: [
-		{ url: "https://blog.clina.top", alias: "Stable" },
-		{ url: "https://blog.150191.xyz", alias: "Develop" },
+		{ url: "https://clina.top", alias: "Stable" },
+		{ url: "https://150191.xyz", alias: "Develop" },
 	],
 };
 
@@ -75,7 +75,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Matrix",
 			icon: "simple-icons:matrix",
-			url: "https://matrix.to/#/@lean:mozilla.org",
+			url: "https://matrix.to/#/@clina:pub.solar",
 		},
 		{
 			name: "GitHub",
