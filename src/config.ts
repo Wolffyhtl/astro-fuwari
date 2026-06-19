@@ -49,7 +49,7 @@ export const siteConfig: SiteConfig = {
 	],
 	officialSites: [
 		{ url: "https://clina.top", alias: "Stable" },
-		{ url: "https://150191.xyz", alias: "Develop" },
+		{ url: "https://blog.150191.xyz", alias: "Develop" },
 	],
 };
 
