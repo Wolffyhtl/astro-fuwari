@@ -69,7 +69,7 @@ Cotalk 是一个基于 Codeberg Issues 与 Gitalk 的评论系统，本文旨在
 
 在打开的 Code Server 编辑器中填入以下代码。
 
-```
+```js
 // Cloudflare Worker：CoTalk OAuth 安全代理
 export default {
     async fetch(request, env) {
@@ -271,7 +271,7 @@ export default {
 
 为了实现在亮色/暗色下都能使 Cotalk 完美显示,我们需要在 src/components/misc/ 目录下创建 Cotalk.astro 文件，内容如下：
 
-``` lang=astro title="src/components/misc/Cotalk.astro"
+```astro title="src/components/misc/Cotalk.astro"
 ---
 // src/components/comment/Cotalk.astro
 export interface Props {
@@ -451,9 +451,22 @@ const configJSON = JSON.stringify(config);
 </style>
 ```
 
+接下来，在 `src/pages/posts/[...slug].astro` 中引入 Cotalk：
+
+``` diff lang="astro" title="src/pages/posts/[...slug].astro"
+---
+import path from "node:path";
+import { render } from "astro:content";
+import License from "@components/misc/License.astro";
+import Markdown from "@components/misc/Markdown.astro";
++import Cotalk from "../../components/misc/Cotalk.astro";
+import BlogInvitationCard from '@components/BlogInvitationCard.astro';
+import I18nKey from "@i18n/i18nKey";
+```
+
 然后在许可证组件之后添加 Cotalk 组件：
 
-``` diff title="src/pages/posts/[...slug].astro"
+``` diff lang="astro" title="src/pages/posts/[...slug].astro"
    {licenseConfig.enable && <License title={entry.data.title} slug={entry.id} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
 
