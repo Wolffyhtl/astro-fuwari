@@ -7,10 +7,14 @@ tags: [日常, 技术]
 category: '技术'
 draft: false
 ---
-Codeberg Pages 是 Codeberg 官方提供的一个静态网站托管平台，类似于 Github Pages.<br>
-今天我们就要将Fuwari博客部署到Codeberg Pages , 使用 Forgejo Actions.<br>
-首先，在仓库中点击设置，点击仓库功能 / 概览，打开 Actions，保存设置。<br>
-接下来，回到仓库，在仓库根目录新建`.forgejo/workflows`文件夹.<br>
+Codeberg Pages 是 Codeberg 官方提供的一个静态网站托管平台，类似于 Github Pages.
+
+今天我们就要将Fuwari博客部署到Codeberg Pages , 使用 Forgejo Actions。
+
+首先，在仓库中点击设置，点击仓库功能 / 概览，打开 Actions，保存设置。
+
+接下来，回到仓库，在仓库根目录新建`.forgejo/workflows`文件夹.
+
 在文件夹中添加 `astro.yml` 文件，内容如下：
 
 ```md
@@ -94,5 +98,4 @@ jobs:
           git push origin pages
 ```
 
-<br>
 然后，就可以愉快的在Codeberg Pages上部署Fuwari博客了！

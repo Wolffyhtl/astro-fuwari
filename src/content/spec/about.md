@@ -10,7 +10,7 @@
 
 <div style="flex: 1; padding-top: 30px;">
         <div style="font-size: 36px; font-weight: 700; color: #1f2937; margin: 0 0 8px 0;" class="about-title">
-            clina_sama
+            Clina_sama
         </div>
         <p style="font-size: 18px; color: #6b7280; margin: 0 0 20px 0;" class="about-subtitle">
             Frontend Developer
@@ -43,7 +43,7 @@
             </a>
         </div>
         <p style="font-size: 16px; line-height: 1.6; color: #4b5563; margin: 0;" class="about-description">
-            你好呀！👋 我是 clina_sama，一位住在中华人民共和国的初中生。我热衷于开源项目贡献，是 komari-document 的贡献者之一。我的个人博客累计浏览量已达 4.5K，衷心感谢大家的支持！
+            你好呀！👋 我是 Clina_sama，一位住在中华人民共和国的初中生。我热衷于开源项目贡献，是 komari-document 的贡献者之一。我的个人博客累计浏览量已达 4.5K，衷心感谢大家的支持！
         </p>
     </div>
 </div>

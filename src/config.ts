@@ -8,7 +8,7 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "clina_sama Blog",
+	title: "Clina_sama Blog",
 	subtitle: "Hi",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
@@ -64,7 +64,7 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "https://image.clina.top/images/avatar.webp", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "clina_sama",
+	name: "Clina_sama",
 	bio: "¡El pueblo unido jamás será vencido!",
 	links: [
 		{
