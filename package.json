@@ -13,7 +13,13 @@
 		"new-post": "node scripts/new-post.js",
 		"format": "biome format --write ./src",
 		"lint": "biome check --write ./src",
-		"preinstall": "npx only-allow pnpm"
+		"preinstall": "npx only-allow pnpm",
+		"build:indexnow": "astro build && node scripts/submit-indexnow-incremental.mjs",
+		"submit-indexnow": "node scripts/submit-indexnow.mjs",
+		"submit-indexnow-inc": "node scripts/submit-indexnow-incremental.mjs",
+		"submit-indexnow-force": "node scripts/submit-indexnow-incremental.mjs --force",
+		"indexnow-status": "node scripts/submit-indexnow-incremental.mjs --status",
+		"indexnow-clear": "node scripts/submit-indexnow-incremental.mjs --clear"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.8",
