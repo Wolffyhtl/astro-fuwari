@@ -41,10 +41,6 @@ export default defineConfig({
 		queuedRendering: { enabled: true },
 	},
 	redirects: {
-		"/:splat": {
-			status: 301,
-			destination: "/",
-		},
 		"/codeberg": {
 			status: 302,
 			destination: "https://codeberg.org/clina",
