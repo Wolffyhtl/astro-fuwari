@@ -40,6 +40,28 @@ export default defineConfig({
 		// 队列渲染以优化性能（实验性）
 		queuedRendering: { enabled: true },
 	},
+	redirects: {
+		"/:splat": {
+			status: 301,
+			destination: "/",
+		},
+		"/codeberg": {
+			status: 302,
+			destination: "https://codeberg.org/clina",
+		},
+		"/github": {
+			status: 302,
+			destination: "https://github.com/wolffyhtl",
+		},
+		"/xmpp": {
+			status: 302,
+			destination: "https://xmpp.link/#clina@yax.im",
+		},
+		"/matrix": {
+			status: 302,
+			destination: "https://matrix.to/#/@clina:pub.solar",
+		},
+	},
 	integrations: [
 		swup({
 			theme: false,
