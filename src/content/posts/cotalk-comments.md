@@ -45,27 +45,27 @@ Cotalk 是一个基于 Codeberg Issues 与 Gitalk 的评论系统，本文旨在
 
 点击 "计算"。
 
-![alt text](./images/cf-panel1.png)
+![alt text](./images/cotalk-comments/cf-panel1.png)
 
 点击 "Workers 和 Pages"。
 
-![alt text](./images/cf-panel2.png)
+![alt text](./images/cotalk-comments/cf-panel2.png)
 
 点击 "创建应用程序"。
 
-![alt text](./images/cf-workers-panel.png)
+![alt text](./images/cotalk-comments/cf-workers-panel.png)
 
 点击 "从 Hello World! 开始"。
 
-![alt text](./images/cf-workers-create.png)
+![alt text](./images/cotalk-comments/cf-workers-create.png)
 
 点击 "部署"。
 
-![alt text](./images/cf-workers-deploy.png)
+![alt text](./images/cotalk-comments/cf-workers-deploy.png)
 
 点击 "编辑代码"。
 
-![alt text](./images/cf-workers-editcode.png)
+![alt text](./images/cotalk-comments/cf-workers-editcode.png)
 
 在打开的 Code Server 编辑器中填入以下代码。
 
@@ -237,7 +237,7 @@ export default {
 
 点击 "设置"。
 
-![alt text](./images/cf-secrets.png)
+![alt text](./images/cotalk-comments/cf-secrets.png)
 
 点击 "添加"。
 
@@ -247,11 +247,11 @@ export default {
 
 创建好后，长这样：
 
-![alt text](./images/cf-secrets-created.png)
+![alt text](./images/cotalk-comments/cf-secrets-created.png)
 
 然后，点击 "域"。
 
-![alt text](./images/cf-workers-domain.png)
+![alt text](./images/cotalk-comments/cf-workers-domain.png)
 
 记住下面的 "Worker URL"。
 
